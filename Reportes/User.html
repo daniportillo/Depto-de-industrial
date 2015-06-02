@@ -1,0 +1,170 @@
+ <!DOCTYPE html>
+<html>
+<style>
+
+</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="js/menu.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+<div class="jumbotron">
+  <div class="logo"><img src="img/logoIndustrial.png" width="320" height="180"></div>
+  <h1><link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>Sistema de Reportes</h1>
+  <h3><link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>Departamento de Industrial</h3>
+</div>
+
+<header>
+
+<div class="menu_bar">
+      <a href="#" class="bt-menu"><span class="icon-list2"></span>Menu</a>
+    </div>
+ 
+    <nav>
+      <ul>
+        <li><a href="#"><img src="iconos/inicio.png" width="17" height="17" alt="Prueba" title="Prueba" border="0"/> Inicio</a></li>
+        <li><a href="#"><img src="iconos/configuracion.png" width="18" height="18" alt"Prueba" title="Prueba" border="0"/>  Configuracion</a></li>
+        <li><a href="#"><img src="iconos/nuevoreporte.png" width="18" height="18" alt="Prueba" title="Prueba" border="0"/>  Reportes</a></li>
+        <li><a href="#"><img src="iconos/cerrarsesion.png" width="18" height="18" alt="Prueba" title="Prueba" border="0"/>   Cerrar Sesion</a></li>
+        <li><a href=""><img src="iconos/acerca.png" width="18" height="18" alt="Prueba" title="Prueba" border="0"> Acerca de</a></li>
+      </ul>
+    </nav>
+</header>
+<!--Solo lo puse para que se hiciera el espacio en blaco xD-->
+<form class="form-horizontal" method="POST">
+<fieldset>
+
+
+<legend>Nuevo reporte</legend>
+
+<!-- Tipo servicio -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="tipoSelect">Tipo de servicio:</label>
+  <div class="col-md-5">
+    <select id="tipoSelect" name="tipoSelect" class="form-control">
+      <option >Seleccione un tipo de servicio</option>
+      <option value="Configuración de Red">Configuración de Red</option>
+      <option value="Formateo a equipo de compúto">Formateo a equipo de compúto</option>
+      <option value="Instalación de software">Instalación de software</option>
+      <option value="Instalación de Red">Instalación de Red</option>
+      <option value="Instalación de equipo de compúto (impresoras, cañones, étc.)">Instalación de equipo de compúto (impresoras, cañones, étc.)</option>
+      <option value="Mantenimiento de equipo de compúto preventivo">Mantenimiento de equipo de compúto preventivo</option>
+      <option value="Mantenimiento de equipo de compúto correctivo">Mantenimiento de equipo de compúto correctivo</option>
+      <option value="Mantenimiento de equipo de impresoras preventivo">Mantenimiento de equipo de impresoras preventivo</option>
+      <option value="Mantenimiento de equipo de impresoras correctivo">Mantenimiento de equipo de impresoras correctivo</option>
+      <option value="Mantenimiento de equipo de cañon preventivo">Mantenimiento de equipo de cañon preventivo</option>
+      <option value="Mantenimiento de equipo de cañon correctivo">Mantenimiento de equipo de cañon correctivo</option>
+      <option value="Reparación de cables (VGA, Corriente)">Reparación de cables (VGA, Corriente)</option>
+      <option value="Otros">Otros...</option>
+    </select>
+  </div>
+</div>
+
+<!-- Ubicacion-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ubicaciontxt">Ubicacion:</label>  
+  <div class="col-md-3">
+  <input id="ubicaciontxt" name="ubicaciontxt" placeholder="Ubicacion de la solicitud de servicio" class="form-control input-md" required="" type="text">
+    
+  </div>
+</div>
+
+<!-- Descripcion -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="descripArea">Descripción:</label>
+  <div class="col-md-5">                     
+    <textarea class="form-control" id="descripArea" name="descripArea"></textarea>
+  </div>
+</div>
+
+<!-- fecha inicio-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fechaIniciotxt">Fecha de inicio:</label>    
+     <div class="col-md-3"> 
+         <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" name="fechainicio" disabled />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+          </div>
+      </div>
+     
+
+</div>
+
+<!-- Estatus Select -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="estatusSelect">Estatus:</label>
+  <div class="col-md-2">
+    <select id="estatusSelect" name="estatusSelect" class="form-control" disabled>
+      <option value="Inciado">Inciado</option>
+      <option value="En proceso">En proceso</option>
+      <option value="Finalizado">Finalizado</option>
+    </select>
+  </div>
+</div>
+
+
+<!-- Botones -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="cancelarbtn"></label>
+  <div class="col-md-8">
+    <button id="crearReporteAdminbtn" name="crearReporteAdminbtn" class="btn btn-info">Crear reporte</button>
+    <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger">Cancelar</button>
+    
+  </div>
+</div>
+
+</fieldset>
+</form>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+</div>
+
+</body>
+</html>
