@@ -5,9 +5,7 @@
 	<title>Departamento de Industrial</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">	
-	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
- 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/custom.css">	
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -25,6 +23,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
+
 			    </div>
 			    <div class="collapse navbar-collapse" id="menu">
 			      <ul class="navbar-nav">
@@ -55,35 +54,31 @@
 	
 
 
-    <h1>Noticias</h1>
+    <h1>Departamento de Industrial</h1>
 
-<?php 
-include "conexion.php";
-	$result = mysqli_query($conn, "SELECT * FROM noticias");
-	while ($row = mysqli_fetch_array($result)) {
-		$ruta = "imagenes/" . $row['imagen'];
-?>
-	<div class="row">
-		<div class="col-md-12">
-			<h2 class="text-center"><a href="noticia.php?id=<?php echo $row['id_noticias'];?>"><?php echo $row['titulo'];?></a></h2>
-		</div>
-		<div class="col-md-10 col-md-offset-1">
-			<div class="col-md-4 alpha">
-				<img class="img-responsive" src="<?php echo $ruta; ?>">
-			</div>
-			<div class="col-md-6">
-				<div class="box">
-					<p><?php echo $row['contenido']; ?></p>
-				</div>
-				<a class="pull-right" href="noticia.php?id=<?php echo $row['id_noticias'];?>">Ver noticia completa</a>
-			</div>
-		</div>
-	</div>	
-        
-<?php		
-	}
-	
- ?>
+
+
+
+
+
+
+
+
+   <div class="row">
+  <div class="col-md-4">
+    <h2>Axis</h2>
+    <p>Simposio Internacional de Ingenieria, Sistemas y Tecnologia.</p>
+   
+  </div>
+  <div class="col-md-4">
+    <h2> CSTI</h2>
+    <p>Centro de Servicio de Tecnologias de la Informacion.</p>
+  </div>
+  <div class="col-md-4">
+    <h2>Sistemas de Reportes</h2>
+    <p> Aqui podra reportar las incidencias de las aulas</p>
+  </div>
+	</div>
 
 </div>
 </body>
