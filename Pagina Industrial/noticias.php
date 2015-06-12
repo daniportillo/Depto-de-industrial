@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title>Departamento de Industrial</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">	
-	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
- 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -59,13 +59,15 @@
 
 <?php 
 include "conexion.php";
-	$result = mysqli_query($conn, "SELECT * FROM noticias");
+header("Content-Type: text/html;charset=utf-8");
+mysqli_query($conn, "SET NAMES 'utf8'");
+	$result = mysqli_query($conn, "SELECT id_noticias, imagen, titulo, SUBSTRING(contenido, 1,500) as contenidoc FROM noticias ORDER BY fecha");
 	while ($row = mysqli_fetch_array($result)) {
-		$ruta = "imagenes/" . $row['imagen'];
+		$ruta = "agregarnoticias/imagenes/" . $row['imagen'];
 ?>
 	<div class="row">
 		<div class="col-md-12">
-			<h2 class="text-center"><a href="noticia.php?id=<?php echo $row['id_noticias'];?>"><?php echo $row['titulo'];?></a></h2>
+			<h3 class="text-center"><a href="noticia.php?id=<?php echo $row['id_noticias'];?>"><?php echo $row['titulo'];?></a></h3>
 		</div>
 		<div class="col-md-10 col-md-offset-1">
 			<div class="col-md-4 alpha">
@@ -73,7 +75,7 @@ include "conexion.php";
 			</div>
 			<div class="col-md-6">
 				<div class="box">
-					<p><?php echo $row['contenido']; ?></p>
+					<p class="text-justify" ><?php echo $row['contenidoc']; ?>...</p>
 				</div>
 				<a class="pull-right" href="noticia.php?id=<?php echo $row['id_noticias'];?>">Ver noticia completa</a>
 			</div>
@@ -84,7 +86,8 @@ include "conexion.php";
 	}
 	
  ?>
-
+ <br>
+<footer class="text-center">CSTI</footer>
 </div>
 </body>
 </html>

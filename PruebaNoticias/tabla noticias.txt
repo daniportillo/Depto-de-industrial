@@ -3,5 +3,6 @@ CREATE TABLE noticias(
     imagen varchar(255),
     titulo varchar(255) NOT NULL,
     contenido varchar(8000),
+    fecha datetime NOT NULL default NOW(),
     PRIMARY KEY (id_noticias)
     )
