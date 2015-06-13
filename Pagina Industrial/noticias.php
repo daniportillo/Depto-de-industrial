@@ -5,13 +5,13 @@
 	<title>Departamento de Industrial</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">	
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
+	<script type="text/javascript" src="js/menuresponsive.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
 
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="js/menuresponsive.js"></script>
+
 </head>
 <body>
 	<div class="container">
@@ -30,7 +30,7 @@
 			      <ul class="navbar-nav">
 			      	<li ><a href="">Inicio</a></li>
 			        <li ><a href="">Departamento</a></li>
-			        <li><a href="">Noticias</a></li>
+			        <li><a href="noticias.php">Noticias</a></li>
 			        <li class="dropdown">
 			          <a href="" class="dropdown-toggle">Oferta Educativa <b class="caret"></b></a>
 			          <ul class="dropdown-menu">
@@ -73,9 +73,9 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 			<div class="col-md-4 alpha">
 				<img class="img-responsive" src="<?php echo $ruta; ?>">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<div class="box">
-					<p class="text-justify" ><?php echo $row['contenidoc']; ?>...</p>
+					<p class="text-justify"><?php echo $row['contenidoc']; ?>...</p>
 				</div>
 				<a class="pull-right" href="noticia.php?id=<?php echo $row['id_noticias'];?>">Ver noticia completa</a>
 			</div>
