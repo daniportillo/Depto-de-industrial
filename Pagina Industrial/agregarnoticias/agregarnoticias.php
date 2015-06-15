@@ -1,3 +1,15 @@
+<?php 
+
+//creamos la sesion
+session_start();
+
+if(!isset($_SESSION['usuario'])) 
+{
+  header('Location:index.php'); 
+  exit();
+  
+}
+ ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -14,9 +26,25 @@
 </head>
 <body>
 
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="nav navbar-nav"> 
+        <li class=""><a href="#">Agregar Noticia</a></li>
+        <li><a href="#">Ver noticias</a></li>
+        <li><a href="cerrarsesion.php">Cerrar Sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 	<div class="container">
-
-
 		<!-- Formulario -->
 		<form enctype="multipart/form-data" action="subir.php" method="post" name="agregarnoticia" class="form-horizontal">
 			<!--Titulo-->
@@ -50,7 +78,6 @@
 
 		</form>
 
-	
 	</div>
 
 </body>
