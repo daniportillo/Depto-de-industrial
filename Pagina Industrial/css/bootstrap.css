@@ -22,7 +22,7 @@ body img{
  
 }
 
-ul, li, a {
+li > a {
   color: #fff!important;
   text-decoration: none!important;
   background: transparent!important;  

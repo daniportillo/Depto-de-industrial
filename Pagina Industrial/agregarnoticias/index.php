@@ -66,7 +66,8 @@ if (isset($_POST['submit']))
   if ($row["username"] == $_POST['user'] && $row['password']== $_POST['password']) {
       //se crea session
       session_start();  
-      $_SESION['usuario']=$row['username'];
+      $_SESSION['usuario']=$row['username'];
+     
  	  header("Location:agregarnoticias.php");
 
   }
