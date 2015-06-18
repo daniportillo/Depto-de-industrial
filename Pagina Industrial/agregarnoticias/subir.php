@@ -61,7 +61,7 @@ if ($_FILES["imagen"]["error"] > 0){
                 alert("Archivo no permitido, es tipo de archivo prohibido o excede el tamano de $limite_kb Kilobytes.");
                 windows.Location.href=agregarnoticias.php;
                 </script>';
-
+                
 		//echo "Archivo no permitido, es tipo de archivo prohibido o excede el tamano de $limite_kb Kilobytes";
 	}
 }

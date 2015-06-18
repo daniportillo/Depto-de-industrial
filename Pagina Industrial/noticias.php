@@ -5,6 +5,7 @@
 	<title>Departamento de Industrial</title>
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">	
+	<link rel="stylesheet" type="text/css" href="css/custom.css">	
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
 	<script type="text/javascript" src="js/menuresponsive.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -28,8 +29,8 @@
 			    </div>
 			    <div class="collapse navbar-collapse" id="menu">
 			      <ul class="navbar-nav">
-			      	<li ><a href="">Inicio</a></li>
-			        <li ><a href="">Departamento</a></li>
+			      	<li ><a href="index.html">Inicio</a></li>
+			        <li ><a href="departamento.html">Departamento</a></li>
 			        <li><a href="noticias.php">Noticias</a></li>
 			        <li class="dropdown">
 			          <a href="" class="dropdown-toggle">Oferta Educativa <b class="caret"></b></a>
@@ -151,9 +152,17 @@ echo "</p></center>";
 
 ?> 
  
-
- <br>
-<footer class="text-center">CSTI</footer>
+<br>
+    <footer class="text-center footer">
+        <div class="row text-center">
+            <div class="col-md-6 col-md-offset-3">
+                <br>
+                <!--<img class="logocsti" src="img/logocsti.png"> -->
+                Centro de Servicios de Tecnologias de la Información
+                <p>Edificio 5G-204, Universidad de Sonora</p>
+            </div>  
+        </div>
+    </footer>
 </div>
 </body>
 </html>

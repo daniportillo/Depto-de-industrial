@@ -1,3 +1,24 @@
 .industrial> p{
  text-align: center!important;
 }
+
+.footer{
+
+border-top:1px dotted black;
+margin: 10px;
+color: #8181F7;
+font-weight: bold;
+
+font-family: arial;
+}
+
+.logocsti{
+	width: 60px;
+	height: 40px;
+
+}
+.col-md-6  > p{
+	color: black;
+	font-weight: normal;
+	text-shadow:none;
+}
