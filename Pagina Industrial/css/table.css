@@ -1,97 +1,23 @@
-.table {
-	margin:0px;padding:0px;
-	width:100%;
-	border:1px solid #000000;
-	
-	-moz-border-radius-bottomleft:10px;
-	-webkit-border-bottom-left-radius:10px;
-	border-bottom-left-radius:10px;
-	
-	-moz-border-radius-bottomright:10px;
-	-webkit-border-bottom-right-radius:10px;
-	border-bottom-right-radius:10px;
-	
-	-moz-border-radius-topright:10px;
-	-webkit-border-top-right-radius:10px;
-	border-top-right-radius:10px;
-	
-	-moz-border-radius-topleft:10px;
-	-webkit-border-top-left-radius:10px;
-	border-top-left-radius:10px;
-}.table table{
-    border-collapse: collapse;
-        border-spacing: 0;
-	width:100%;
-	height:100%;
-	margin:0px;padding:0px;
-}.table tr:last-child td:last-child {
-	-moz-border-radius-bottomright:10px;
-	-webkit-border-bottom-right-radius:10px;
-	border-bottom-right-radius:10px;
-}
-.table table tr:first-child td:first-child {
-	-moz-border-radius-topleft:10px;
-	-webkit-border-top-left-radius:10px;
-	border-top-left-radius:10px;
-}
-.table table tr:first-child td:last-child {
-	-moz-border-radius-topright:10px;
-	-webkit-border-top-right-radius:10px;
-	border-top-right-radius:10px;
-}.table tr:last-child td:first-child{
-	-moz-border-radius-bottomleft:10px;
-	-webkit-border-bottom-left-radius:10px;
-	border-bottom-left-radius:10px;
-}.table tr:hover td{
-	
-}
-.table tr:nth-child(odd){ background-color:#f9f8f7; 
+.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } 
 
-font-size: 20px;
-}
-.table tr:nth-child(even)    { background-color:#ffffff; }.table td{
-	vertical-align:middle;
-	
-	text-align: center;
-	border:2px solid #000000;
-	border-width:0px 1px 1px 0px;
-	text-align:left;
-	padding:10px;
-	font-size:17px;
-	font-weight:bold;
-	font-weight:normal;
-	color:#000000;
-}.table tr:last-child td{
-	border-width:0px 1px 0px 0px;
-}.table tr td:last-child{
-	border-width:0px 0px 1px 0px;
-}.table tr:last-child td:last-child{
-	border-width:0px 0px 0px 0px;
-}
-.table tr:first-child td{
-		background:-o-linear-gradient(bottom, #20097c 5%, #20097c 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #20097c), color-stop(1, #20097c) );
-	background:-moz-linear-gradient( center top, #20097c 5%, #20097c 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#20097c", endColorstr="#20097c");	background: -o-linear-gradient(top,#20097c,20097c);
+.datagrid {font: normal 12px/150% Verdana, Arial, Helvetica, sans-serif; background: #fff; 
+	overflow: hidden; border: 2px solid #000000; -webkit-border-radius: 5px; -moz-border-radius: 5px; 
+	border-radius: 5px; }
 
-	background-color:#20097c;
-	border:0px solid #000000;
-	text-align:center;
-	border-width:0px 0px 1px 1px;
-	font-size:18px;
-	font-family:Verdana;
-	font-weight:bold;
-	color:#ffffff;
-}
-.table tr:first-child:hover td{
-	background:-o-linear-gradient(bottom, #20097c 5%, #20097c 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #20097c), color-stop(1, #20097c) );
-	background:-moz-linear-gradient( center top, #20097c 5%, #20097c 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#20097c", endColorstr="#20097c");	background: -o-linear-gradient(top,#20097c,20097c);
+.datagrid table td, .datagrid table th { padding: 3px 10px; }
 
-	background-color:#20097c;
-}
-.table tr:first-child td:first-child{
-	border-width:0px 0px 1px 0px;
-}
-.table tr:first-child td:last-child{
-	border-width:0px 0px 1px 1px;
-}
+.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, 
+color-stop(0.05, #000099), color-stop(1, #000099) );
+background:-moz-linear-gradient( center top, #000099 5%, #000099 100% );
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000099', endColorstr='#000099');
+background-color:#000099; color:#FFFFFF; font-size: 20px; font-weight: bold; 
+border-left: 7px solid #000099; text-align: center;} 
+
+.datagrid table thead th:first-child { border: none; }
+
+.datagrid table tbody td { color: #000000; border-left: 2px solid #000000;
+font-size: 15px;border-bottom: 1px solid #000000;font-weight: normal;  text-align: center;}
+
+.datagrid table tbody td:first-child { border-left: none; }
+
+.datagrid table tbody tr:last-child td { border-bottom: none; }
