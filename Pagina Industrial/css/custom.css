@@ -1,9 +1,26 @@
-.industrial> p{
- text-align: center!important;
+.industrial{
+	background-color: #D8D8D8;
+	margin-right: 15px;
+	margin-top: 8px;
+	padding: 10px;
+	margin-left: 1%;
+	height: 380px!important;
+}
+.industrial h5{
+	font-family: 'Slabo 27px', serif;
+	text-shadow: .4px  .4px black;
+}
+
+.logoaxis{
+	width: 49%;
+	height: 20%;
+}
+.cstilogo{
+	width: 40%;
+	height: 20%;
 }
 
 .footer{
-
 border-top:1px dotted black;
 margin: 10px;
 color: #8181F7;
