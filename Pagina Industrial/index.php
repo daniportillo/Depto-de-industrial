@@ -25,6 +25,7 @@
   </div>
 
   <div class="col-md-3 industrial">
+    <img src="img/logoreporte.png" class="logoreporte">
     <h5>SISTEMA DE REPORTES</h5>
     <p class="text-justify"> Aqui podra reportar las incidencias de las aulas</p>
   </div>

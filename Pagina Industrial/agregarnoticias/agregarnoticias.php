@@ -22,7 +22,6 @@ if(!isset($_SESSION['usuario']))
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
 
-
 </head>
 <body>
 
@@ -44,6 +43,7 @@ if(!isset($_SESSION['usuario']))
     </div>
   </div>
 </nav>
+
 	<div class="container">
 		<!-- Formulario -->
 		<form enctype="multipart/form-data" action="subir.php" method="post" name="agregarnoticia" class="form-horizontal">
