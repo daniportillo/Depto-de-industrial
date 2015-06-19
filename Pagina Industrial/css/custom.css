@@ -22,3 +22,12 @@ font-family: arial;
 	font-weight: normal;
 	text-shadow:none;
 }
+tr > th{
+	color:white;
+	text-align: center;
+	background-color: #045FB4;
+}
+.tfooter{
+	background-color: white;
+	color: black;
+}

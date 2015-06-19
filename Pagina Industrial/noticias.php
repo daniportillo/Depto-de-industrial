@@ -29,26 +29,26 @@
 			    </div>
 			    <div class="collapse navbar-collapse" id="menu">
 			      <ul class="navbar-nav">
-			      	<li ><a href="index.html">Inicio</a></li>
+			      	<li><a href="index.html">Inicio</a></li>
 			        <li ><a href="departamento.html">Departamento</a></li>
 			        <li><a href="noticias.php">Noticias</a></li>
 			        <li class="dropdown">
-			          <a href="" class="dropdown-toggle">Oferta Educativa <b class="caret"></b></a>
+			          <a class="dropdown-toggle" data-toggle="dropdown" >Oferta Educativa <b class="caret"></b></a>
 			          <ul class="dropdown-menu">
-			           <li><a href="#">Maestria en Ingenieria Sistemas y Tecnologia</a></li>
+			           <li><a href="http://mii.isi.uson.mx/">Maestria en Ingenieria Sistemas y Tecnologia</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Maestria en Sustentabilidad</a></li>
+                        <li><a href="http://www.gds.uson.mx/ms/">Maestria en Sustentabilidad</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Especialidad en Desarrollo Sutentables</a></li>
+                        <li><a href="http://www.gds.uson.mx/eds/">Especialidad en Desarrollo Sutentables</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Industrial y de Sistemas</a></li>
+                        <li><a href="industrial.html">Industrial y de Sistemas</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Sistemas de Informacion</a></li>
+                        <li><a href="sistemas.html">Sistemas de Informacion</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Mecatronica</a></li>
+                        <li><a href="mecatronica.html">Mecatronica</a></li>
 			            </ul>
 			        </li>
-			        <li><a href="">Contacto</a></li>
+			        <li><a href="contacto.php">Contacto</a></li>
 			      </ul>	     
 			      </div>
 			  </div>
