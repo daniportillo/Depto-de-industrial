@@ -1,11 +1,19 @@
+<?php 
+//creamos la sesion
+session_start();
+if(!isset($_SESSION['usuario'])) 
+{
+  header('Location:index.php'); 
+  exit();
+}
+ ?>
+<!DOCTYPE HTML>
+<html>
+
 <?php
 //conexion a la base de datos
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "csti_db";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
+ 	include "conexion.php";
+ 	include "header.php";
     
     if ($conn->connect_error) {
        die("Connection failed: " . $conn->connect_error);
@@ -36,34 +44,27 @@ if ($_FILES["imagen"]["error"] > 0){
 				//@mysqli_query($conn, "INSERT INTO imagenes (imagen) VALUES ('$nombre')") ;
 				@mysqli_query($conn, "INSERT INTO noticias (imagen, titulo, contenido) VALUES ('$nombre', '$titulo', '$contenido')");
 
-				echo'<script type="text/javascript">
-                alert("Se ha agregado la noticia exitosamente.");
-                windows.Location.href=agregarnoticias.php;
-                </script>';
-				//header("Location:agregarnoticias.php");
-
+                echo "<p class='text-center'>Se ha agregado la noticia exitosamente.<p>";
+               
 			} else {
-				echo'<script type="text/javascript">
-                alert("Ocurrio un error al mover la imagen.");
-                </script>';
-				//echo "Ocurrio un error al mover el archivo.";
-				header("Location:agregarnoticias.php");
+
+				echo "Ocurrió un error al subir la imagen.";
+				echo "<p class='text-center'><a href='agregarnoticias.php'>Atrás.</a></p>";
+
 			}
 		} else {
-			echo'<script type="text/javascript">
-                alert("Esta imagen ya existe.");
-                </script>';
-			//echo $_FILES['imagen']['name'] . ", este archivo existe";
-                header("Location:agregarnoticias.php");
+
+			 	echo  " <p class='text-center'>".$_FILES['imagen']['name'] . ",este archivo existe. </p>";
+                echo "<p class='text-center'><a href='agregarnoticias.php'>Atrás.</a></p>";
 		}
 	} else {
-			echo'<script type="text/javascript">
-                alert("Archivo no permitido, es tipo de archivo prohibido o excede el tamano de $limite_kb Kilobytes.");
-                windows.Location.href=agregarnoticias.php;
-                </script>';
-                
-		//echo "Archivo no permitido, es tipo de archivo prohibido o excede el tamano de $limite_kb Kilobytes";
+			echo "<p class='text-center'>Archivo no permitido, es tipo de archivo prohibido o excede el tamano de $limite_kb Kilobytes.</p>";
+            echo "<p class='text-center'><a href='agregarnoticias.php'>Atrás.</a></p>"; 
+		
 	}
 }
 
 ?>
+</body>
+</html>
+

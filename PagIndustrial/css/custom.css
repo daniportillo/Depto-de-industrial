@@ -31,18 +31,34 @@
 }
 
 .footer{
-border-top:1px dotted black;
-margin: 10px;
-color: #8181F7;
-font-weight: bold;
-
-font-family: arial;
+color:white;
+background-color: #000066;
+margin: 0;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 12px;
+padding: 10px;
 }
 
 .logocsti{
 	width: 60px;
 	height: 40px;
 
+}
+
+.faceicon{
+	width: 32px;
+	height:32px;
+}
+.faceicon:hover{
+	 opacity: 0.4;
+}
+
+.linkuson{
+	color: white!important;
+
+}
+.linkuson:hover{
+	color: green!important;
 }
 .col-md-6  > p{
 	color: black;

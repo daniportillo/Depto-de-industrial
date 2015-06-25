@@ -1,6 +1,6 @@
   
 body {
-  font-family: 'Lato', sans-serif!important;
+  font-family: 'Open Sans Condensed', sans-serif!important;
   font-size: 15px!important;
   line-height: 1.42857143!important;
   color: #333333!important;
@@ -28,14 +28,11 @@ li > a {
   background: transparent!important;  
 }
 
-.row a{
+h3 a{
 color: #000099!important;
 
 }
-.row1{
-  text-align: justify!important;
-font-size: 16px!important;
-}
+
 
 a, .navbar-toggle,.dropdown-menu{
   -webkit-transition: all .3s!important;
