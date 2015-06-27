@@ -14,8 +14,10 @@ body {
 h2{
   text-align: center!important;
 }
+.container .row a{
+color: #000099 !important;
 
-
+}
 body img{
   height: 180px;
   width:100%;
