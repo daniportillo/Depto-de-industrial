@@ -5,9 +5,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
 	<title>Featured Content Slider</title>
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	
 	<script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
 	<script type="text/javascript" src="js/jquery-easing-1.3.pack.js"></script>
 	<script type="text/javascript" src="js/jquery-easing-compatibility.1.2.pack.js"></script>
@@ -21,7 +20,7 @@
 
 	<script type="text/javascript" src="js/coda-slider.1.1.1.pack.js"></script>
 	<script type="text/javascript" src="js/slider.js"></script>
-	
+
 </head>
 
 <body>
@@ -80,12 +79,12 @@
 			mysqli_query($conn, "SET NAMES 'utf8'");
                 $result = mysqli_query($conn, "SELECT * FROM noticias ORDER BY fecha desc LIMIT 4");
                     while ($row = mysqli_fetch_array($result)) {
-                     $ruta = "imagenes/" . $row['imagen'];
+                     $ruta = "agregarnoticias/imagenes/" . $row['imagen'];
                       ?>								
 				
 				<div class="panel" title="<?php echo $row['id_noticias'];?>">
 					<div class="wrapper">
-						<img src="<?php echo $ruta; ?>" alt="scotch egg" class="floatLeft" style=""/>
+						<img src="<?php echo $ruta; ?>"  class="floatLeft" style=""/>
 						<h2><?php echo $row['titulo'];?></h2>
 						<p><?php echo substr($row['contenido'],0,500) ;?>... </p> <a class="readmore" style="color:black;" href="noticia.php?id=<?php echo $row['id_noticias'];?>">Leer noticia completa </a>
 					</div>
@@ -112,30 +111,33 @@
 	</div>
 <br><br>
 
-
-	<div class="row">
+<br>
+	<div class="row industrial">
   <div class="col-md-4">
-    <h3>SIMPOSIO INTERNACIONAL DE INGENIERÍA, SISTEMAS Y TECNOLOGÍA</h3>
-    <img class="logoaxis" src="img/logoaxis.png">
-     		<p>Axis, es un magno evento organizado por estudiantes, para estudiantes, con la finalidad de brindar un espacio, en el que los 	participantes puedan ilustrarse de las nuevas tendencias en el área de tecnología e industria. Así mismo, hacer que los alumnos despierten el 	   interés de sus respectivas carreras...</p>
+  <img class="logoaxis" src="img/logoaxis.png">
+    <h5>SIMPOSIO INTERNACIONAL DE INGENIERÍA, SISTEMAS Y TECNOLOGÍA</h5>
+ 		<p class="text-justify">Axis, es un magno evento organizado por estudiantes, para estudiantes, con la finalidad de brindar un espacio, en el que los 	participantes puedan ilustrarse de las nuevas tendencias en el área de tecnología e industria. Así mismo, hacer que los alumnos despierten el 	   interés de sus respectivas carreras...</p>
 
-    <a class="pull-right" href="http://www.simposioaxis.com">Ver más</a>
+    <a href="http://www.simposioaxis.com" tarjet="_blank">Ver más</a>
    
   </div>
   <div class="col-md-4">
-    <h3>CENTRO DE SERVICIOS DE TECNOLOGIA E INFORMACION</h3>
-    <img  class="cstilogo" src="img/logocsti.png">
-    <P>Centro de Servicio de Tecnologias de la Informacion.</P>
+   <img  class="cstilogo" src="img/logocsti.png">
+  	
+    <h5>CENTRO DE SERVICIO DE TECNOLOGIAS DE LA INFORMACIÓN</h5>
+    <a href="#" tarjet="_blank">Ver más</a>
     
   </div>
 
   <div class="col-md-4">
-    <h3>SISTEMA DE REPORTES</h3>
-     <img src="img/logoreporte.png" class="logoreporte">
-    <p> Aqui podra reportar las incidencias de las aulas</p>
+  <img src="img/logoreporte.png" class="logoreporte">
+    <h5>SISTEMA DE REPORTES</h5>
+    <p class="text-justify"> Aqui podra reportar las incidencias de las aulas</p>
   </div>
 	</div>
    </div>
+   
+ <?php include "footer.php"; ?>
 
 </body>
 </html>

@@ -7,14 +7,14 @@
 .container .floatLeft 					   { float: left; margin-right: 19px; width:560px; height:900px; }
 .floatRight									{ float: right; }
 .clear 										{ clear: both; }
-.wrapper a									{ outline: none; }
+.wrapper a									{ outline: none!important; }
 
 
 /*
 	PAGE STRUCTURE
 */
-#page-wrap 									{ margin-right: 45px; width: 100%; position: relative; min-height: 500px; 
-											background:#E0E0D1; margin-right: 40px; }
+#page-wrap 									{ margin-right: 45px!important; width: 100%!important; position: relative!important; min-height: 420px!important; 
+											background:#E0E0D1!important; margin-right: 40px!important; }
 
 /*
 	TYPOGRAPHY
@@ -24,8 +24,8 @@
 
 
 
-.wrapper blockquote, a						{  font-size: 14px; 
-									  		   margin-top: 20px; background:#E0E0D1;}
+.wrapper blockquote a						{  font-size: 14px; 
+									  		    background:#E0E0D1;}
 .wrapper p 									{ font-size: 16px; background-color:#E0E0D1;}
 
 
@@ -37,18 +37,18 @@
 .slider-wrap							{background:#E0E0D1;}
 
 
-.slider-wrap								{  width:  100%;  margin: auto;position: absolute; top: 25px; }
+.slider-wrap								{  width:  100%;  margin: auto;position: absolute;Z }
 
 	
 .stripViewer .panelContainer 
-.panel ul									{ text-align: left;  }
+.panel ul									{ text-align: center;  }
 .stripViewer								{ position: relative; overflow: hidden; width: 100%; height:420px; }
 .stripViewer .panelContainer				{ position: relative; left: 0; top: 0; }
 .stripViewer .panelContainer .panel			{ float: left;  position: relative; width: 1150px; }
 .stripNavL, .stripNavR, .stripNav			{ display: none; }
 
 #page-wrap .movers-row .cross-link .nav-thumb { border: 1px solid black; background-color: #000066; }
-.movers-row									{ width: 100%;  background-color:#000066 !important;  padding-right: 3px; height: 61px; margin-top: -10px;}
+.movers-row									{ width: 100%;  background-color:#000066 ;  padding-right: 3px; height: 61px; margin-top: -10px;}
 .movers-row div								{ width: 25%; float: left;  background-color: #000066; }
 .movers-row div a.cross-link 				{ float: left;   background-color: #000066;  }
 
