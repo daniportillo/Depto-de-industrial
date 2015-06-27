@@ -43,7 +43,6 @@ font-family: 'Slabo 27px', serif;
 p{background-color: #E0E0D1 !important;}
 
 
-
 #page-wrap .slider-wrap .movers-row .linea a:hover{
 background-color: #FFFF00 !important;
 width: 100%;
@@ -109,7 +108,9 @@ text-align: right!important;
   float: left;
   display: block;
   position: inherit;
-  width: 100%
+  width: 100%;
+   padding-top: 10px;
+  padding-bottom: 10px;
   
 }
 table{
@@ -119,6 +120,9 @@ table{
   text-align: center;
   color: white;
   font-size: 12px;
+}
+td a:hover{
+  color:#FFFF00!important;
 }
 .imgfooter{
   width: 70px!important;
@@ -144,5 +148,5 @@ table{
 
 }
 .linkuson:hover{
-  color: green!important;
+  color: #ffff00!important;
 }

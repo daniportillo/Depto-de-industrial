@@ -37,7 +37,7 @@ $total_paginas = ceil($total_registros / $registros);
 	while ($row = mysqli_fetch_array($cad)) {
 		$ruta = "agregarnoticias/imagenes/" . $row['imagen'];
 ?>
-	<div class="row">
+	<div class="row noticias">
 		<div class="col-md-12">
 			<h3 class="text-center"><a href="noticia.php?id=<?php echo $row['id_noticias'];?>"><?php echo $row['titulo'];?></a></h3>
 		</div>

@@ -14,7 +14,7 @@ body {
 h2{
   text-align: center!important;
 }
-.container .row a{
+.container .noticias a{
 color: #000099 !important;
 
 }
@@ -44,7 +44,7 @@ a, .navbar-toggle,.dropdown-menu{
 }
 .container a:hover,
 .container a:focus {
-  color: #063847!important;  
+  color: #063847;  
 }
 a:focus {
   outline: thin dotted!important;

@@ -21,8 +21,12 @@ if(!isset($_SESSION['usuario']))
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
-
-
+  <script type="text/javascript">
+  function setUpdateAction() {
+  document.formnoticias.action = "editar.php";
+  document.formnoticias.submit();
+  }
+  </script>
 </head>
 <body>
 
@@ -45,7 +49,7 @@ if(!isset($_SESSION['usuario']))
   </div>
 </nav>
 	<div class="container">
-		<form method="post">
+		<form method="post" name="formnoticias">
     <table class="table table-hover table-bordered table-striped">
        <thead>
       <tr>
@@ -55,14 +59,15 @@ if(!isset($_SESSION['usuario']))
         <th>Fecha</th>
         <th>
          <button id="submit" name="submit" class="btn btn-danger">Eliminar</button>
-        <input name="update" value="Editar" onClick="setUpdateAction();" type="button" class="btn btn-primary">
+         <input type="submit" class="button" id="btneditar" name="update" value="Editar not" onclick="setUpdateAction()">
+        <button  value="Editar" oction="editar.php" type="button" class="btn btn-primary">Editar</button>
       </th>
       </tr>
     </thead>
     <tbody>
           <?php
 
-            include "conexion.php";
+            include "../conexion.php";
             header("Content-Type: text/html;charset=utf-8");
             mysqli_query($conn, "SET NAMES 'utf8'");
     
@@ -94,7 +99,7 @@ if(!isset($_SESSION['usuario']))
         mysqli_close($conn);
      ?>
          <?php
-    include "conexion.php";
+    include "../conexion.php";
 
     if (isset($_POST['submit'])) {
       //$user_id = $_POST['eliminar'];

@@ -12,7 +12,7 @@ if(!isset($_SESSION['usuario']))
 
 <?php
 //conexion a la base de datos
- 	include "conexion.php";
+ 	include "../conexion.php";
  	include "header.php";
     
     if ($conn->connect_error) {

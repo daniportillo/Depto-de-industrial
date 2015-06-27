@@ -43,12 +43,12 @@
 <?php
 //incluidos la clase de conxion
 
-$con=mysqli_connect("localhost", "root", "", "csti_db");
+include "../conexion.php";
 
  $errorLogin=false;
 header("Content-Type: text/html;charset=utf-8");
-mysqli_set_charset($con, 'utf8');
-mysqli_query($con, "SET NAMES 'utf8'");
+mysqli_set_charset($conn, 'utf8');
+mysqli_query($conn, "SET NAMES 'utf8'");
 if (mysqli_connect_errno())
   {
   echo "Error de conexion: " . mysqli_connect_error();
@@ -58,7 +58,7 @@ if (isset($_POST['submit']))
 {
    $sql1= "select * from usuariosnoticias where username= '".$_POST['user']."' &&  password ='".$_POST['password']."'";
  
-   $result=mysqli_query($con, $sql1)
+   $result=mysqli_query($conn, $sql1)
       or exit("Sql Error".mysqli_error($result));
        
     $row = mysqli_fetch_array($result);
@@ -77,6 +77,6 @@ if (isset($_POST['submit']))
                 alert("Usuario o Contraseña Incorrecta");
                 </script>';
   }
-  mysqli_close($con);
+  mysqli_close($conn);
     }
 ?>

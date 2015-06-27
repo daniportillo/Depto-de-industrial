@@ -4,6 +4,8 @@
 }
 
 .footer{
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: #000066;
   float: left;
   display: block;
@@ -16,11 +18,12 @@
 table{
   width: 100%
 }
-.textfooter{
+.textfooter, td a{
   text-align: center;
-  color: white;
+  color: white!important;
   font-size: 12px;
 }
+
 .imgfooter{
   width: 70px!important;
   padding-left: 5px!important;
@@ -45,7 +48,7 @@ table{
 
 }
 .linkuson:hover{
-	color: green!important;
+	color: #ffff00!important;
 }
 .col-md-6  > p{
 	color: black;

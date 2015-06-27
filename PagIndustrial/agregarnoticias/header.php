@@ -1,13 +1,19 @@
 <head>
-	<title>Agregar noticia</title>
+	<title>Noticias Depatarmento Industrial</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
+ <script type="text/javascript"  language="javascript"  src="assets/js/modificar.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/custom.css">
+  <script type="text/javascript">
+$("#upfile1").click(function () {
+    $("#file1").trigger('click');
+});
 
+  </script>
 </head>
 <body>
 
