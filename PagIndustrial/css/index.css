@@ -148,5 +148,33 @@ td a:hover{
 
 }
 .linkuson:hover{
+<<<<<<< HEAD
   color: #ffff00!important;
 }
+=======
+  color: green!important;
+}
+
+@media screen and (max-width: 400px){
+.wrapper img{
+
+  visibility: hidden; display:none;
+ 
+}
+.wrapper{
+width: 300px;
+font-size: 12px;
+
+}
+.wrapper h2{
+font-size: 15px;
+
+}
+
+.industrial {
+margin-top: 50%
+    }
+
+
+}
+>>>>>>> origin/master
