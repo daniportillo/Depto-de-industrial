@@ -24,8 +24,8 @@ body img{
  
 }
 
-li > a {
-  color: #fff!important;
+.navbar ul li a {
+  color: white!important;
   text-decoration: none!important;
   background: transparent!important;  
 }
