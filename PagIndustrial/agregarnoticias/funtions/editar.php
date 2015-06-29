@@ -9,14 +9,14 @@ if(!isset($_SESSION['usuario']))
   exit();
   
 }
- 
+
 include "../conexion.php";
 
 //parte para actualizar
 if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 $usersCount = count($_POST["titulo"]);
 for($i=0;$i<$usersCount;$i++) {
-mysqli_query("UPDATE noticias set titulo='" . $_POST["titulo"][$i] . "', contenido='" . $_POST["contenido"][$i] . "', imagen='" . $_POST["ruta"][$i]);
+mysqli_query($conn,"UPDATE noticias set titulo='" . $_POST["titulo"][$i] . "', contenido='" . $_POST["contenido"][$i] . "', imagen='" . $_POST["ruta"][$i]. "' WHERE id_noticias='" . $_POST["id_noticias"]. "'");
 }
 header("Location:vernoticias.php");
 } 
@@ -34,12 +34,6 @@ header("Location:vernoticias.php");
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato:300,400">
  <script type="text/javascript"  language="javascript"  src="assets/js/modificar.js"></script>
   <link rel="stylesheet" type="text/css" href="css/custom.css">
-  <script type="text/javascript">
-$("#upfile1").click(function () {
-    $("#file1").trigger('click');
-});
-
-  </script>
 </head>
 <body>
 
@@ -87,17 +81,20 @@ $row[$i]= mysqli_fetch_array($result);
 <table class="table table-striped">
 <tr>
 <td><label>Titulo</label></td>
-<td><input type="text" name="name[]" class="txtField" value="<?php echo $row[$i]['titulo']; ?>"></td>
+<td><input type="text" name="titulo[]" required="" class="txtField" value="<?php echo $row[$i]['titulo']; ?>">
+<input type="hidden" name="id_noticias[]" class="txtField" value="<?php echo $row[$i]['id_noticias']; ?>"></td>
+<td></td>
 </tr>
 <tr>
 <td><label>Imagen</label></td>
-<td><img src="<?php echo "imagenes/".$row[$i]['imagen']; ?>" id="upfile1" style="cursor:pointer" /></td>
-<td><input type="file" name="" id="file1"></td>
-<td><input type="file" name="imagen[]" id="imagen" class="input-file"  required=""></td>
+<td><img width="100px" src="<?php echo "imagenes/".$row[$i]['imagen']; ?>" id="upfile1" style="cursor:pointer" /></td>
+<td><input type="file" name="imagen[]" id="imagen" class="input-file" ></td>
+
 </tr>
+<tr></tr>
 <tr>
 <td><label>Contenido</label></td>
-<td><textarea type="text" name="contenido[]" rows="10" cols="90" class="txtField" ><?php echo $row[$i]['contenido']; ?></textarea></td>
+<td><textarea type="text" name="contenido[]" rows="5" cols="90" class="txtField" required=""><?php echo $row[$i]['contenido']; ?></textarea></td>
 </tr>
 <tr>
 <td></td></tr>

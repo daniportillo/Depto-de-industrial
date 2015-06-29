@@ -26,7 +26,7 @@ if ($_FILES["imagen"]["error"] > 0){
 	//ahora vamos a verificar si el tipo de archivo es un tipo de imagen permitido.
 	//y que el tamano del archivo no exceda los 7000kb
 	$permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
-	$limite_kb = 7000;
+	$limite_kb = 10000;
 
 	if (in_array($_FILES['imagen']['type'], $permitidos) && $_FILES['imagen']['size'] <= $limite_kb * 1024){
 		//esta es la ruta donde copiaremos la imagen
@@ -45,6 +45,7 @@ if ($_FILES["imagen"]["error"] > 0){
 				@mysqli_query($conn, "INSERT INTO noticias (imagen, titulo, contenido) VALUES ('$nombre', '$titulo', '$contenido')");
 
                 echo "<p class='text-center'>Se ha agregado la noticia exitosamente.<p>";
+                echo "<p class='text-center'><a href='agregarnoticias.php'>Atrás.</a></p>";
                
 			} else {
 
