@@ -81,7 +81,7 @@ if(!isset($_SESSION['usuario']))
             }else{
             $inicio = ($pagina-1) * $registros;
             } 
-            $result ="SELECT id_noticias, imagen, titulo, DATE_FORMAT(fecha, '%d-%b-%Y') as fechanoticia, SUBSTRING(contenido, 1,100) as contenidoc FROM noticias ORDER BY fecha desc limit ".$inicio." , ".$registros."";
+            $result ="SELECT id_noticias, imagen, titulo, DATE_FORMAT(fecha, '%d-%b-%Y') as fechanoticia, SUBSTRING(contenido, 1,200) as contenidoc FROM noticias ORDER BY fecha desc limit ".$inicio." , ".$registros."";
             $cad = mysqli_query($conn,$result) or die ( 'error al listar, $pegar' .mysqli_error($conn)); 
            
             //calculamos las paginas a mostrar

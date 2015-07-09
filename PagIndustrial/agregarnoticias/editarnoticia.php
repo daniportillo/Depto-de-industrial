@@ -64,6 +64,8 @@ if(!isset($_SESSION['usuario']))
 	
 	<?php } 
 		include "../conexion.php";
+	header("Content-Type: text/html;charset=utf-8");
+	mysqli_query($conn, "SET NAMES 'utf8'");
 		if (isset($_POST['actualizar'])) {
 			$ruta = "imagenes/" . $_FILES['imagen']['name'];
 		//comprobamos si este archivo existe para no volverlo a copiar.
@@ -77,8 +79,11 @@ if(!isset($_SESSION['usuario']))
 						$nombre = $_FILES['imagen']['name'];
 						unlink($_POST['imagenanterior']);
 						@mysqli_query($conn, "UPDATE noticias set titulo='" . $_POST["titulo"]. "', contenido='" . $_POST["contenido"]. "', imagen='" . $nombre. "' WHERE id_noticias='" . $id. "'");
-						header("location:vernoticias.php");
+						
                 		echo "<p class='text-center'>Se ha actualizado la noticia exitosamente.<p>";
+                		 echo'<script type="text/javascript">
+                			window.location.href="vernoticias.php";
+               				 </script>';
 
 					}else{
 						echo "Ocurrió un error al subir la imagen.";
@@ -86,7 +91,10 @@ if(!isset($_SESSION['usuario']))
                 //echo "<p class='text-center'><a href='agregarnoticias.php'>Atrás.</a></p>";
 				}else{//sI NO SE MODIFICA IMAGEN
 					$r=@mysqli_query($conn, "UPDATE noticias set titulo='" . $_POST["titulo"]. "', contenido='" . $_POST["contenido"]. "' WHERE id_noticias='" . $id. "'");
-					header("location:vernoticias.php");				}
+									}
+					 echo'<script type="text/javascript">
+                			window.location.href="vernoticias.php";
+               				 </script>';
 				
 		} else {
 				

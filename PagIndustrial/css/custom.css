@@ -18,7 +18,7 @@
 table{
   width: 100%
 }
-.textfooter, td a{
+.textfooter{
   text-align: center;
   color: white!important;
   font-size: 12px;
