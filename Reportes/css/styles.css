@@ -7,7 +7,7 @@
 	outline: none;
 }
 body {
-	background-color: #000099;
+	background-color: #2E2EFE;
 }
 
 form[role=login] {
@@ -19,10 +19,14 @@ form[role=login] {
 	background: #fff;
 	padding: 50px;
 	border-radius: 10px;
+-webkit-box-shadow: 10px 12px 15px 0px rgba(0,0,0,0.38);
+-moz-box-shadow: 10px 12px 15px 0px rgba(0,0,0,0.38);
+box-shadow: 10px 12px 15px 0px rgba(0,0,0,0.38);
 }
 	form[role=login] > section {
 		max-width: 278px;
 		margin: 0 auto;
+
 	}
 	form[role=login] > section div {
 		margin: 30px 0 0 0;
@@ -43,6 +47,12 @@ form[role=login] {
 		font-size: 17px;
 		background: #14a016;
 	}
+		form[role=login] > section button.btn-success:hover {
+		
+		background: #5ABC5B;
+		color: #CEE3F6;
+	}
+
 	
 .signup {
 	font-size: 15px;
@@ -52,3 +62,4 @@ form[role=login] {
 	.signup a {
 		color: #fff;	
 	}
+
