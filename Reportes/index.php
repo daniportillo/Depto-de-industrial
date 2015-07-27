@@ -39,7 +39,7 @@ $total_paginas = ceil($total_registros / $registros);
 
 
 <?php
-}
+}	
 	include "footer.php";
 
  ?>

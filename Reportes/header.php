@@ -1,4 +1,16 @@
- <!DOCTYPE html>
+<?php 
+//creamos la sesion
+session_start();
+//validamos si se ha hecho o no el inicio de sesion correctamente
+//si no se ha hecho la sesion nos regresará a login.php
+if(!isset($_SESSION['tipo'])) 
+{
+  header('Location:login.php'); 
+  exit();
+}
+ ?>
+<!DOCTYPE html>
+
 <html>
 <style>
 
@@ -25,6 +37,7 @@
 
 <header>
 
+</nav>
 <div class="menu_bar">
       <a href="#" class="bt-menu"><span class="icon-list2"></span>Menu</a>
 </div>
@@ -33,17 +46,26 @@
       <ul>
         <!--Menu para todo usuarios-->
         <li><a href="index.php"><img src="iconos/inicio.png" width="17" height="17" border="0"/> Inicio</a></li>
-        <li><a href="nuevo_usuario.php"><img src="iconos/nuevousuario.png" width="18" height="18"   border="0"/>  Nuevo Usuario</a></li>
+       
         <!--Menu solo para administradores-->
-        <li><a href="configuracion.php"><img src="iconos/configuracion.png" width="18" height="18" border="0"/>  Configuracion</a></li>
-        <li><a href="reportes.php"><img src="iconos/nuevoreporte.png" width="18" height="18" alt="Prueba"  border="0"/>  Reportes</a></li>
-
+        <?php if ($_SESSION['tipo']=='administrador') {
+        echo " 
+        <li><a href='nuevo_usuario.php'><img src='iconos/nuevousuario.png' width='18' height='18'   border='0'/>  Nuevo Usuario</a></li>
+        <li><a href='configuracion.php'><img src='iconos/configuracion.png' width='18' height='18' border='0'/>  Configuracion</a></li>
+        <li><a href='reportes.php'><img src='iconos/nuevoreporte.png' width='18' height='18' alt='Prueba'  border='0'/>  Reportes</a></li>";
+        } ?>
+        
         <!--Menu para usuarios normales-->
-        <li><a href="#"><img src="iconos/nuevoreporte.png" width="18" height="18" alt="Prueba"  border="0"/>Nuevo Reporte</a></li>
-        <li><a href="#"><img src="iconos/nuevoreporte.png" width="18" height="18" alt="Prueba" title="Prueba" border="0"/>Configuración personal</a></li>
+        <?php if ($_SESSION['tipo']=="usuario") {
+        echo "
+        <li><a href='#''><img src='iconos/nuevoreporte.png' width='18' height='18' alt='Prueba'  border='0'/>Nuevo Reporte</a></li>
+        <li><a href='#''><img src='iconos/configuracion.png' width='18' height='18' alt='Prueba' title='Prueba' border='0'/>Configuración personal</a></li>";
+        
+        } ?>
+        
         <!--Menu para todo usuarios-->
-        <li><a href="logout.php"><img src="iconos/cerrarsesion.png" width="18" height="18" border="0"/>   Cerrar Sesion</a></li>
         <li><a href=""><img src="iconos/acerca.png" width="18" height="18" alt="Prueba"  border="0"> Acerca de</a></li>
+        <li><a href="logout.php"><img src="iconos/cerrarsesion.png" width="18" height="18" border="0"/>   Cerrar Sesion</a></li>
       </ul>
     </nav>
 </header>

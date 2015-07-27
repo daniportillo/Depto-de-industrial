@@ -8,7 +8,7 @@ body {
 	background:#000099;
 }
 .container{
-
+padding: 0;
 background: #FFFFFA;
 
 }
@@ -34,7 +34,6 @@ header {
  
 header nav {
 	width:auto;
-	max-width:1000px;
 	background:#000057;
 }
  
@@ -63,7 +62,7 @@ header nav ul li span {
 }
  
 header nav ul li a:hover {
-	background:#037E8C;
+	color:green;
 }
  
 section {
@@ -99,13 +98,14 @@ section {
 		text-decoration:none;
 		font-weight: bold;
 		font-size:25px;
-		-webkit-box-sizing:border-box;
-		-moz-box-sizing:border-box;
-		box-sizing:border-box;
+		
 	}
  
 	.menu_bar span {
 		float:right;
 		font-size:40px;
 	}
+}
+.jumbotron{
+	margin-bottom: 0!important;
 }
