@@ -9,7 +9,7 @@
  <h1 text align="center";>Lista de Reportes</h1>
  
 <!--Tabla de Usuarios-->
-<form name="frmUser" method="post" action="">
+<form name="frmUser" method="post" action="pdf.php">
        
   <table class="table table-hover table-bordered table-striped">
     <thead>
@@ -22,6 +22,7 @@
         <th>Estatus</th>
         <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar">
         <input name="update" value="Editar" onClick="setUpdateAction();" type="button" class="btn btn-primary">
+        <input class="btn btn-danger"  name="pdf" type="submit" value="PDF" >
       </th>
       </tr>
     </thead>
