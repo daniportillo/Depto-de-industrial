@@ -1,9 +1,10 @@
 <?php 
 //creamos la sesion
 session_start();
+include "datosUsuario.php";
 //validamos si se ha hecho o no el inicio de sesion correctamente
 //si no se ha hecho la sesion nos regresará a login.php
-if(!isset($_SESSION['tipo'])) 
+if(!isset($_SESSION['nombre'])) 
 {
   header('Location:login.php'); 
   exit();
@@ -58,7 +59,7 @@ if(!isset($_SESSION['tipo']))
         <!--Menu para usuarios normales-->
         <?php if ($_SESSION['tipo']=="usuario") {
         echo "
-        <li><a href='#''><img src='iconos/nuevoreporte.png' width='18' height='18' alt='Prueba'  border='0'/>Nuevo Reporte</a></li>
+        <li><a href='nuevoreporte.php''><img src='iconos/nuevoreporte.png' width='18' height='18'  border='0'/>Nuevo Reporte</a></li>
         <li><a href='#''><img src='iconos/configuracion.png' width='18' height='18' alt='Prueba' title='Prueba' border='0'/>Configuración personal</a></li>";
         
         } ?>

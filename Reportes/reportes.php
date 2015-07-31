@@ -1,6 +1,10 @@
 <?php 
 
 	include "header.php";
+  if ($_SESSION['tipo']!='administrador') {
+    header('Location:index.php'); 
+  exit();
+  }
   ini_set("display_errors", false);
  ?>
 <script language="javascript" src="js/reportes.js" type="text/javascript"></script>
@@ -31,11 +35,13 @@
 
     $conn = mysql_connect("localhost","root","");
     mysql_select_db("csti_db",$conn);
-    
+ 
    $result = mysql_query("SELECT * FROM reportes_industrial");
+
    $i=0;
   
     while($row = mysql_fetch_array($result)) {
+      
       if($i%2==0)
         $classname="evenRow";
           else

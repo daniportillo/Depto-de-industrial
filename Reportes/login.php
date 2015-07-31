@@ -63,6 +63,7 @@ if (isset($_POST['go']))
   if ($row["tipo"] == 'usuario') {
       //se crea session
       session_start();  
+      $_SESSION['id']=$row['id'];
       $_SESSION['nombre']=$row["name"];
       $_SESSION['tipo']=$row["tipo"]; 
       header("Location:index.php");
@@ -71,6 +72,7 @@ if (isset($_POST['go']))
   elseif ($row["tipo"] == 'administrador') {
       session_start();
       $_SESSION['nombre']=$row["name"];
+       $_SESSION['id']=$row['id'];
       $_SESSION['tipo']=$row["tipo"]; 
       header("Location:index.php");
       

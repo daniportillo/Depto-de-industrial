@@ -1,14 +1,14 @@
 <?php 
+include "header.php";
 
-	include "header.php";
-  if ($_SESSION['tipo']!='usuario') {
-    header('Location:index.php'); 
-  exit();
-  }
-	//Creación del nuevo reporte
+include "conexion.php";
+$id = $_GET['id'];
+//consulta noticia con id
+	$result= mysqli_query($conn, "SELECT *, DATE_FORMAT(fecha_mod, '%d-%b-%Y') as fecha FROM reportes_industrial WHERE reporte_id =".$_GET['id']);
+while ($row = mysqli_fetch_array($result)) {
+	
 ?>
-
-<form class="form-horizontal" method="POST">
+	<form class="form-horizontal" method="POST">
 <fieldset>
 
 
@@ -40,62 +40,42 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="ubicaciontxt">Ubicacion:</label>  
   <div class="col-md-3">
-  <input id="ubicaciontxt" name="ubicaciontxt" placeholder="Ubicacion de la solicitud de servicio" class="form-control input-md" required="" type="text">
+  <input id="ubicaciontxt" name="ubicaciontxt" placeholder="Ubicacion de la solicitud de servicio" class="form-control input-md" required="" type="text" 
+  	value="<?php echo $row['ubicacion']; ?>">
     
   </div>
 </div>
-
 
 <!-- Descripcion -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="descripArea">Descripción:</label>
   <div class="col-md-5">                     
-    <textarea class="form-control" id="descripArea" name="descripArea"></textarea>
+    <textarea class="form-control" id="descripArea" name="descripArea"><?php echo $row['descrip']; ?></textarea>
   </div>
 </div>
 
-
+<!--Estatus-->
+<div class="form-group">
+	<label class="col-md-4 control-label" for="estatustxt">Estatus:</label>
+	<div class="col-md-2">
+	<input id="estatustxt" name="estatustxt" type="text" class="form-control input-md" value="<?php echo $row['estatus']; ?>" disabled>
+	</div>
+</div>
 
 <!-- Botones -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="cancelarbtn"></label>
   <div class="col-md-8">
     <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger">Cancelar</button>
-    <button id="crearReporteAdminbtn" name="crearReporteAdminbtn" class="btn btn-success">Crear reporte</button>
+    <button id="crearReporteAdminbtn" name="crearReporteAdminbtn" class="btn btn-success">Actualizar</button>
   </div>
 </div>
 
 </fieldset>
 </form>
-<!--Crea el  reporte-->
-    <?php if (isset($_POST['crearReporteAdminbtn'])){
-              include "datosUsuario.php";
-              include "conexion.php";
+<?php 
 
-               $tipo=$_POST['tipoSelect'];
-               $ubicacion_reporte=$_POST['ubicaciontxt'];
-               $solicitante=$id;
-               $descrp_reporte=$_POST['descripArea'];
-
-
-            $sql="INSERT INTO `csti_db`.`reportes_industrial` (`reporte_id`, `user_id`, `tipo`, `ubicacion`, `descrip`, `fecha_inicio`, `fecha_mod`, `estatus`) 
-            VALUES (NULL, '$solicitante', '$tipo', '$ubicacion_reporte', '$descrp_reporte', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Iniciado');";
-            mysqli_query($conn, $sql);
-            echo'<script type="text/javascript">
-                alert("Reporte creado exitosamente.");
-                </script>';
-               
-            
-            mysqli_close($conn);
-      
-  } 
-  ?>
-
-
-
-
-
-<?php
-	include "footer.php";
+}
+include "footer.php";
 
  ?>

@@ -1,6 +1,10 @@
 <?php 
 
 	include "header.php";
+  if ($_SESSION['tipo']!='administrador') {
+    header('Location:index.php'); 
+  exit();
+  }
 
 ?>
 <!--Formulario para crear usuarios-->
