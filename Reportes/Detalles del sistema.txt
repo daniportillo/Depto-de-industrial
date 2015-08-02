@@ -1,9 +1,11 @@
--Botones de cancelar
 -Edición de reportes: 
 	*mas presentable
 	*Las fecha de ultima modificacion no solo se cambia al editar, el usuario no puede cambiar fecha.
 -PDF:
 	*Solo crea un pdf a la vez, corregirlo
 -Listado reportes:
+	*Paginación
+	*No se ven los carácteres especiales
+-Listado de usuarios:
 	*Paginación
 	*No se ven los carácteres especiales

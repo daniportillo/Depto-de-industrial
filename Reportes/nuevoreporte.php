@@ -69,8 +69,7 @@
 </form>
 <!--Crea el  reporte-->
     <?php if (isset($_POST['crearReporteAdminbtn'])){
-              include "datosUsuario.php";
-              include "conexion.php";
+             
 
                $tipo=$_POST['tipoSelect'];
                $ubicacion_reporte=$_POST['ubicaciontxt'];
@@ -78,7 +77,7 @@
                $descrp_reporte=$_POST['descripArea'];
 
 
-            $sql="INSERT INTO `csti_db`.`reportes_industrial` (`reporte_id`, `user_id`, `tipo`, `ubicacion`, `descrip`, `fecha_inicio`, `fecha_mod`, `estatus`) 
+            $sql="INSERT INTO `reportes_industrial` (`reporte_id`, `user_id`, `tipo`, `ubicacion`, `descrip`, `fecha_inicio`, `fecha_mod`, `estatus`) 
             VALUES (NULL, '$solicitante', '$tipo', '$ubicacion_reporte', '$descrp_reporte', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'Iniciado');";
             mysqli_query($conn, $sql);
             echo'<script type="text/javascript">

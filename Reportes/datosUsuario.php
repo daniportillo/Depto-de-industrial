@@ -1,11 +1,11 @@
 <?php 
 
-$con=mysqli_connect("localhost", "root", "", "csti_db");
+include "conexion.php";
 
   
-$validUser = mysqli_real_escape_string($con, $_SESSION['nombre']);
+$validUser = mysqli_real_escape_string($conn, $_SESSION['nombre']);
 $sql= "select * from usuarios_industrial where name= '".$validUser."'";
-$result=mysqli_query($con, $sql);
+$result=mysqli_query($conn, $sql);
 
     while ($row=mysqli_fetch_array($result)) {
             $id=$row['user_id'];

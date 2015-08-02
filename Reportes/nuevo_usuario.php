@@ -7,6 +7,15 @@
   }
 
 ?>
+   <script type="text/javascript">
+        window.onload =function(){
+          select();
+        }
+        function cancelar(){
+           window.location.reload();
+         // window.location.href="nuevo_usuario.php";
+        }
+  </script>
 <!--Formulario para crear usuarios-->
 <form class="form-horizontal" class="crearUsuario" action="" method="post">
 <fieldset>
@@ -16,7 +25,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="nombretxt"><link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>Nombre:</label>  
   <div class="col-md-5">
-  <input id="nombretxt" name="nombretxt" placeholder="Escriba nombre(s) y apellidos" class="form-control input-md" required="" type="text">
+  <input id="nombretxt" name="nombretxt" placeholder="Escriba nombre(s) y apellidos" class="form-control input-md" required="" type="text" maxlength="100">
     
   </div>
 </div>
@@ -34,7 +43,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="userNametxt">Nombre de usuario:</label>  
   <div class="col-md-4">
-  <input id="userNametxt" name="userNametxt" placeholder="Escriba nombre de usuario" class="form-control input-md" required="" type="text">
+  <input id="userNametxt" name="userNametxt" placeholder="Escriba nombre de usuario" class="form-control input-md" required="" type="text" maxlength="30">
     
   </div>
 </div>
@@ -42,7 +51,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="passtxt">Contraseña:</label>  
   <div class="col-md-4">
-  <input id="passtxt" name="passtxt" placeholder="Escriba contraseña" class="form-control input-md" required="" type="password">
+  <input id="passtxt" name="passtxt" placeholder="Escriba contraseña" class="form-control input-md" required="" type="password" maxlength="30">
     
   </div>
 </div>
@@ -50,7 +59,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="passtxt">Confirme contraseña:</label>  
   <div class="col-md-4">
-  <input id="passtxt" name="pass2txt" placeholder="Confirme contraseña" class="form-control input-md" required="" type="password">
+  <input id="passtxt" name="pass2txt" placeholder="Confirme contraseña" class="form-control input-md" required="" type="password" maxlength="30">
     
   </div>
 </div>
@@ -59,16 +68,16 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="emailtxt">E-mail:</label>  
   <div class="col-md-4">
-  <input id="emailtxt" name="emailtxt" placeholder="Escriba e-mail" class="form-control input-md" required="" type="email">
+  <input id="emailtxt" name="emailtxt" placeholder="Escriba e-mail" class="form-control input-md" required="" type="email" maxlength="100">
     
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="cancelarbtn"></label>
-  <div class="col-md-8">
-    <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger">Cancelar</button>
-    <button id="crearUsuariobtn" name="crearUsuariobtn" class="btn btn-primary">Crear usuario</button>
+ 
+  <div class="col-md-6 col-md-offset-6">
+    <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
+    <button id="crearUsuariobtn" name="crearUsuariobtn" class="btn btn-success">Crear usuario</button>
   </div>
 </div>
 
@@ -78,7 +87,7 @@
     <?php if (isset($_POST['crearUsuariobtn'])){
     $sql='select * FROM usuarios';
 
-    $r=mysqli_query($con, $sql);
+    $r=mysqli_query($conn, $sql);
 
     $verificar_usuario=0;//variable para identificar si el usario ya existe, 0 no, 1 si.
 
@@ -102,9 +111,9 @@
             $pass2=$_POST['passtxt'];
             $mail=$_POST['emailtxt'];
 
-            $sql="INSERT INTO usuarios (tipo, name, userName, password, email) 
+            $sql="INSERT INTO usuarios_industrial (tipo, name, userName, password, email) 
             values ('$tipo', '$nombre', '$userN', '$pass1','$mail')";
-            mysqli_query($con, $sql);
+            mysqli_query($conn, $sql);
             echo'<script type="text/javascript">
                 alert("Usuario registrado existosamente.");
                 </script>';

@@ -60,7 +60,7 @@ if(!isset($_SESSION['nombre']))
         <?php if ($_SESSION['tipo']=="usuario") {
         echo "
         <li><a href='nuevoreporte.php''><img src='iconos/nuevoreporte.png' width='18' height='18'  border='0'/>Nuevo Reporte</a></li>
-        <li><a href='#''><img src='iconos/configuracion.png' width='18' height='18' alt='Prueba' title='Prueba' border='0'/>Configuración personal</a></li>";
+        <li><a href='configuracion_personal.php''><img src='iconos/configuracion.png' width='18' height='18' alt='Prueba' title='Prueba' border='0'/>Configuración personal</a></li>";
         
         } ?>
         

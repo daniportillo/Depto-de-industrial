@@ -3,11 +3,28 @@ include "header.php";
 
 include "conexion.php";
 $id = $_GET['id'];
+ 
 //consulta noticia con id
 	$result= mysqli_query($conn, "SELECT *, DATE_FORMAT(fecha_mod, '%d-%b-%Y') as fecha FROM reportes_industrial WHERE reporte_id =".$_GET['id']);
+
 while ($row = mysqli_fetch_array($result)) {
-	
+	$tipoReporte=$row['tipo'];
 ?>
+   <script type="text/javascript">
+        window.onload =function(){
+          select();
+        }
+        function  select(){
+          $("#tipoSelect").val("<?php echo $tipoReporte; ?>");
+
+        }
+        function cancelar(){
+          window.location.href="indezx.php";
+        }
+        function actualizar(){
+          window.location.reload();
+        }
+  </script>
 	<form class="form-horizontal" method="POST">
 <fieldset>
 
@@ -66,14 +83,32 @@ while ($row = mysqli_fetch_array($result)) {
 <div class="form-group">
   <label class="col-md-4 control-label" for="cancelarbtn"></label>
   <div class="col-md-8">
-    <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger">Cancelar</button>
-    <button id="crearReporteAdminbtn" name="crearReporteAdminbtn" class="btn btn-success">Actualizar</button>
+    <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
+    <button id="actualizarbtn" name="actualizarbtn" class="btn btn-success" onclick="actualizar()">Actualizar</button>
   </div>
 </div>
 
 </fieldset>
 </form>
 <?php 
+  if (isset($_POST['actualizarbtn'])) {
+    
+               $tipo=$_POST['tipoSelect'];
+               $ubicacion_reporte=$_POST['ubicaciontxt'];
+               $descrp_reporte=$_POST['descripArea'];
+
+            $sql="UPDATE reportes_industrial  
+            SET  tipo='".$tipo."', ubicacion='".$ubicacion_reporte."', descrip='".$descrp_reporte."', fecha_mod= CURRENT_TIMESTAMP
+            WHERE reporte_id='".$id."'";
+
+            mysqli_query($conn, $sql);
+            echo'<script type="text/javascript">
+                alert("Se ha actualizado el reporte.");
+                </script>';
+               
+            
+            mysqli_close($conn);
+  }
 
 }
 include "footer.php";
