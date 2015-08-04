@@ -2,12 +2,27 @@
 include "header.php";
 
 include "conexion.php";
-$id = $_GET['id'];
+
+if($_SESSION['tipo']!='usuario') 
+{
+  header('Location:index.php'); 
+  exit();
+}
+
+$id_reporte = $_GET['id'];//Obtiene el id del reporte
  
-//consulta noticia con id
+
+//consulta reporte con id
 	$result= mysqli_query($conn, "SELECT *, DATE_FORMAT(fecha_mod, '%d-%b-%Y') as fecha FROM reportes_industrial WHERE reporte_id =".$_GET['id']);
 
+
 while ($row = mysqli_fetch_array($result)) {
+  if ($row['user_id']!=$id) {//Verifica que el reporte sea del usuario logeado
+      echo'<script type="text/javascript">
+                window.location.href="index.php";
+                </script>';
+      
+  }
 	$tipoReporte=$row['tipo'];
 ?>
    <script type="text/javascript">
@@ -19,7 +34,7 @@ while ($row = mysqli_fetch_array($result)) {
 
         }
         function cancelar(){
-          window.location.href="indezx.php";
+          window.location.href="index.php";
         }
         function actualizar(){
           window.location.reload();
