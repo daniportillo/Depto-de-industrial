@@ -36,7 +36,7 @@
     $conn = mysql_connect("localhost","root","");
     mysql_select_db("csti_db",$conn);
  
-   $result = mysql_query("SELECT * FROM reportes_industrial");
+   $result = mysql_query("SELECT * FROM reportes_industrial ORDER BY fecha_mod");
 
    $i=0;
   

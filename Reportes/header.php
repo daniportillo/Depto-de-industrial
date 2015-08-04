@@ -21,6 +21,7 @@ if(!isset($_SESSION['nombre']))
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css">
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="js/menu.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -31,8 +32,8 @@ if(!isset($_SESSION['nombre']))
 <div class="container">
 
 <div class="jumbotron">
-  <div class="logo"><img src="img/logoIndustrial.png" width="320" height="180"></div>
-  <h1><link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>Sistema de Reportes</h1>
+  <div class="logo"><img class="img-responsive"src="img/logoIndustrial.png" width="320" height="180"></div>
+  <h1 class="sistema">Sistema de Reportes</h1>
   <h3><link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>Departamento de Industrial</h3>
 </div>
 
@@ -50,29 +51,31 @@ if(!isset($_SESSION['nombre']))
            <div class="collapse navbar-collapse" id="menu">
              <ul class="nav navbar-nav">
                 <!--Menu para todo usuarios-->
-               <li><a href="index.php"><img src="iconos/inicio.png" width="17" height="17" border="0"/> Inicio</a></li>
-       
+               <li><a href="index.php"><span class="fa fa-home"> </span>   Inicio</a></li>
+               <li><a href="mensajes.php"><span class="glyphicon glyphicon-envelope"></span> Mensajes</a> </li>
                  <!--Menu solo para administradores-->
                    <?php if ($_SESSION['tipo']=='administrador') {
                      echo " 
-                       <li><a href='nuevo_usuario.php'><img src='iconos/nuevousuario.png' width='18' height='18'   border='0'/>  Nuevo Usuario</a></li>
-                       <li><a href='configuracion.php'><img src='iconos/configuracion.png' width='18' height='18' border='0'/>  Configuracion</a></li>
-                       <li><a href='reportes.php'><img src='iconos/nuevoreporte.png' width='18' height='18' alt='Prueba'  border='0'/>  Reportes</a></li>";
+                       <li><a href='nuevo_usuario.php'><span class='fa fa-user-plus'></span>  Nuevo Usuario</a></li>
+                       <li><a href='reportes.php'><span class='fa fa-file-text'></span>  Reportes</a></li>
+                       <li><a href='configuracion.php'><span class='fa fa-cogs'></span> Configuracion</a></li>
+                       ";
                    } ?>
         
                  <!--Menu para usuarios normales-->
                    <?php if ($_SESSION['tipo']=="usuario") {
                    echo "
-                   <li><a href='nuevoreporte.php''><img src='iconos/nuevoreporte.png' width='18' height='18'  border='0'/>Nuevo Reporte</a></li>
-                   <li><a href='configuracion_personal.php''><img src='iconos/configuracion.png' width='18' height='18' alt='Prueba' title='Prueba' border='0'/>Configuración personal</a></li>";
+                   <li><a href='nuevoreporte.php''><span class='fa fa-file-text'></span> Nuevo Reporte</a></li>
+                   <li><a href='configuracion_personal.php''><span class='fa fa-cogs'></span> Configuración personal</a></li>";
                     } ?>
         
                  <!--Menu para todo usuarios-->
-               <li><a href=""><img src="iconos/acerca.png" width="18" height="18" border="0"> Acerca de</a></li>
+               <!--<li><a href=""><img src="iconos/acerca.png" width="18" height="18" border="0"> Acerca de</a></li>
+             -->
              </ul>
              <ul class="nav navbar-nav navbar-right">
               <li> <a href=""> <span class="glyphicon glyphicon-user"></span><?php echo '  '.$name; ?></a></li>
-               <li><a href="logout.php"><img src="iconos/cerrarsesion.png" width="18" height="18" border="0"/>   Cerrar Sesion</a></li>
+               <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>   Cerrar Sesion</a></li>
             </ul>
           </div>
       </div>

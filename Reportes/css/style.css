@@ -22,11 +22,12 @@ background: #FFFFFA;
 }
 
 .jumbotron{
-	font-family: 'Fjalla One', sans-serif;
+	font-family: 'Alegreya SC', serif;
 	text-align: center;
 	
 
 }
+
  
  .navbar-default{
 	width:auto;
@@ -35,7 +36,7 @@ background: #FFFFFA;
  
 .navbar-default .navbar-nav > li > a {
     color:white!important;
-    font-size: 12px;
+    font-size: 13px;
 }
 .navbar-default .navbar-nav > li > a:hover {
     color:green!important;
@@ -60,4 +61,7 @@ section {
 
 .jumbotron{
 	margin-bottom: 0!important;
+}
+.clave{
+	padding-right: 0!important;
 }

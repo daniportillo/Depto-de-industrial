@@ -9,6 +9,26 @@
 ?>
 	<h3 class="text-center">Historial de reportes</h3>
 	<br>
+
+	<form method="POST">
+
+
+	<div class="row">
+		<div class="form-group">
+			<div class="col-md-2 col-md-offset-8 clave">
+				<input id="clavetxt" name="clavetxt" placeholder="Palabra clave" class="form-control input-md" type="text">
+			</div>
+		 	<div >
+			  <button type="submit" for="#clavetxt" class="btn btn-primary">
+      			<span class="glyphicon glyphicon-search"></span> Buscar
+   		      </button>
+			</div>
+		</div>
+	</div>
+	</form>
+
+	<br>
+	
 <?php
 	//Muestra de reportes para usuarios administradores
 if ($_SESSION['tipo']=='administrador') {
@@ -28,7 +48,7 @@ $inicio = ($pagina-1) * $registros;
 	$result = "SELECT r.reporte_id, u.name as solicitante, r.tipo, r.ubicacion, r.fecha_mod, r.estatus, SUBSTRING(r.descrip, 1,200) as descripcion 
 	FROM reportes_industrial r, usuarios_industrial u 
 	WHERE r.user_id=u.user_id
-	ORDER BY r.fecha_inicio desc limit ".$inicio." , ".$registros." ";
+	ORDER BY r.fecha_mod desc limit ".$inicio." , ".$registros." ";
 	$cad = mysqli_query($conn,$result) or die ( 'error al listar, $pegar' .mysqli_error($conn)); 
 	//calculamos las paginas a mostrar
 
