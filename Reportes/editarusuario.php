@@ -4,7 +4,7 @@ include('header.php');
 ini_set("display_errors", false);
 
 $conn = mysql_connect("localhost","root","");
-mysql_select_db("csti_db",$conn);
+mysql_select_db("csti_db1",$conn);
 
 
 if(isset($_POST["submit"]) && $_POST["submit"]!="") {
@@ -38,34 +38,66 @@ $row[$i]= mysql_fetch_array($result);
 <table class="table table-striped">
 <tr>
 <td><label>Nombre</label></td>
-<td><input type="text" name="name[]" class="txtField" value="<?php echo $row[$i]['name']; ?>"></td>
+<td>
+<div class="form-group"> 
+  <div class="col-md-3">
+  <input name="name[]" class="form-control input-md" type="text" value="<?php echo $row[$i]['name']; ?>">
+ </div>
+</div>		
+</td>
 </tr>
+
 <tr>
 <td><label>Password</label></td>
-<td><input type="password" name="password[]" class="txtField" value="<?php echo $row[$i]['password']; ?>"></td>
+<td>
+<div class="form-group"> 
+  <div class="col-md-3">
+  <input name="password[]" class="form-control input-md" type="password" value="<?php echo $row[$i]['password']; ?>">
+ </div>
+</div>
+
+</td>
 </tr>
+
+<tr>
 <td><label>Tipo</label></td>
 <td>
-<select  name="tipo[]">
+<div class="form-group">
+  <div class="col-md-5">    
+<select  name="tipo[]" class="form-control">
       <option selected><?php echo $row[$i]['tipo']; ?></option></option>
       <option value="usuario">usuario</option>
       <option value="administrador">administrador</option>
     </select>
 
+
+  </div>
+</div>
 </td>
+</tr>
+
 <tr>
 <td><label>Nombre de Usuario</label></td>
-<td><input type="text" name="userName[]" class="txtField" value="<?php echo $row[$i]['userName']; ?>"><input type="hidden" name="user_id[]" class="txtField" value="<?php echo $row[$i]['user_id']; ?>"></td>
-<tr><td></td></tr>
-</table>
+<td>
+<div class="form-group"> 
+  <div class="col-md-3">
+  <input name="userName[]" class="form-control input-md" type="ptext" value="<?php echo $row[$i]['userName']; ?>">
+  <input type="hidden" name="user_id[]" class="txtField" value="<?php echo $row[$i]['user_id']; ?>">
+ </div>
+</div>
+</td>
 </td>
 </tr>
 
 <?php
 }
 ?>
-<td colspan="2"><input type="submit" name="submit" value="Actualizar" class="btn btn-primary"></td>
-
+<tr>
+<td colspan="2">
+<input type="submit" name="submit" value="Actualizar" class="btn btn-primary">
+<input type="submit" name="submit" value="Cancelar" onClick="configuracion.php" class="btn btn-danger">
+</td>
+</tr>
 </table>
 </div>
 </form>
