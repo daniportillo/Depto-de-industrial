@@ -4,7 +4,7 @@ include('header.php');
 ini_set("display_errors", false);
 
 $conn = mysql_connect("localhost","root","");
-mysql_select_db("csti_db1",$conn);
+mysql_select_db("csti_db",$conn);
 
 
 if(isset($_POST["submit"]) && $_POST["submit"]!="") {
