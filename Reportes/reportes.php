@@ -1,79 +1,139 @@
 <?php 
 
-	include "header.php";
-  if ($_SESSION['tipo']!='administrador') {
-    header('Location:index.php'); 
-  exit();
-  }
-  ini_set("display_errors", false);
- ?>
-<script language="javascript" src="js/reportes.js" type="text/javascript"></script>
+  include "header.php";
+  
 
-<!--configuracion de usuarios-->
- <h1 text align="center";>Lista de Reportes</h1>
- 
-<!--Tabla de Usuarios-->
-<form name="frmUser" method="post" action="pdf.php">
+  // reportes
+  include "conexion.php";
+  header("Content-Type: text/html;charset=utf-8");
+   ini_set("display_errors", false);
+?>
+  <h3 class="text-center">Listado de reportes</h3>
+  <script language="javascript" src="js/reportes.js" type="text/javascript"></script>
+  <br>
+  
+
+  <form name="frmUser" method="post" action="pdf.php" >
        
   <table class="table table-hover table-bordered table-striped">
     <thead>
       <tr>
-        <th>Tipo</th>
-        <th>Ubicacion</th>
-        <th>Descripcion</th>
-        <th>Fecha de inicio</th>
-        <th>Fecha de modificacion</th>
-        <th>Estatus</th>
-        <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar">
-        <input name="update" value="Editar" onClick="setUpdateAction();" type="button" class="btn btn-primary">
-        <input class="btn btn-danger"  name="pdf" type="submit" value="PDF" >
-      </th>
+        <th>Informacion del Reporte</th>
+        <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar" >
+           <input name="update" value="Editar" onClick="setUpdateAction();" type="button" class="btn btn-primary">
+        <input class="btn btn-danger"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
+        </th>
       </tr>
     </thead>
     <tbody>
-      <?php
-
-    $conn = mysql_connect("localhost","root","");
-    mysql_select_db("csti_db",$conn);
- 
-   $result = mysql_query("SELECT * FROM reportes_industrial ORDER BY fecha_mod");
-
-   $i=0;
-  
-    while($row = mysql_fetch_array($result)) {
       
-      if($i%2==0)
-        $classname="evenRow";
-          else
-        $classname="oddRow";
-        ?>
+<?php
+//onclick="window.open('timeclock/index.php', '_blank';location.reload();"
+  //Muestra de reportes para usuarios administradores
+if ($_SESSION['tipo']=='administrador') {
+  
+$registros=4;
+  @$pagina = $_GET ['pagina'];
+
+if (!isset($pagina))
+{
+$pagina = 1;
+$inicio = 0;
+}
+else
+{
+$inicio = ($pagina-1) * $registros;
+} 
+  $result = "SELECT r.reporte_id, u.name as solicitante, r.tipo, r.ubicacion, r.fecha_mod,r.fecha_inicio, r.estatus, SUBSTRING(r.descrip, 1,80) as descripcion 
+  FROM reportes_industrial r, usuarios_industrial u 
+  WHERE r.user_id=u.user_id
+  ORDER BY r.fecha_inicio desc limit ".$inicio." , ".$registros." ";
+  $cad = mysqli_query($conn,$result) or die ( 'error al listar, $pegar' .mysqli_error($conn)); 
+  //calculamos las paginas a mostrar
+
+$contar = "SELECT * FROM reportes_industrial";
+$contarok = mysqli_query($conn, $contar);
+$total_registros = mysqli_num_rows($contarok);
+//$total_paginas = ($total_registros / $registros);
+$total_paginas = ceil($total_registros / $registros); 
+
+
+  while ($row = mysqli_fetch_array($cad)) {
+?>
+  <tr> 
+   <td>
+  <div class="row reportes_inicio">
+    <div class="col-md-6 col-md-offset-1">
+      <p><b>Tipo de Servicio: <?php echo utf8_decode($row['tipo'])?></b></p>
+      <b><p><?php echo 'Descripción: '. substr(utf8_decode($row['descripcion']), 0,150) ?>...</p></b> 
+      <b><p><?php echo 'Solicitado por: '.utf8_decode($row['solicitante']).' || Estatus: '.utf8_decode($row['estatus']); ?></p></b>
+      <b><p><?php echo 'Fecha de inicio: '.$row['fecha_inicio']; ?></p></b>
+      <b><p><?php echo 'Fecha de modificacion: '.$row['fecha_mod']; ?></p></b>
+
+    </div>
+  </div>
+    <br>
+  </td>
+  <td><input type="checkbox" name="reportes[]" value="<?php echo $row["reporte_id"]; ?>" ></td> 
+  </tr>   
         
-        <tr class="<?php if(isset($classname)) echo $classname;?>"> 
-         <td><?php echo $row['tipo']?></td> 
-         <td><?php echo $row['ubicacion']?></td> 
-         <td><?php echo $row['descrip']?></td> 
-         <td><?php echo $row['fecha_inicio']?></td>
-         <td><?php echo $row['fecha_mod']?></td>
-         <td><?php echo $row['estatus']?></td>
-         <td><input type="checkbox" name="reportes[]" value="<?php echo $row["reporte_id"]; ?>" ></td> 
-         </td> 
-         </tr>
-         
-      <?php     
-    $i++;    
-        }
-  		include('eliminar_reportes.php');   
-    
-		?>
-    </tbody>
+<?php   
+  }
+  
+  //creando los enlaces de paginacion de resultados
+
+echo "<center><p>";
+
+if($total_registros>$registros){
+if(($pagina - 1) > 0) {
+echo "<span class='pactiva' ><a href='?pagina=".($pagina-1)."' style='color:blue'>&laquo; Anterior</a></span> ";
+}
+// Numero de paginas a mostrar
+$num_paginas=10;
+//limitando las paginas mostradas
+$pagina_intervalo=ceil($num_paginas/2)-1;
+
+// Calculamos desde que numero de pagina se mostrara
+$pagina_desde=$pagina-$pagina_intervalo;
+$pagina_hasta=$pagina+$pagina_intervalo;
+
+// Verificar que pagina_desde sea negativo
+if($pagina_desde<1){ // le sumamos la cantidad sobrante para mantener el numero de enlaces mostrados $pagina_hasta-=($pagina_desde-1); $pagina_desde=1; } // Verificar que pagina_hasta no sea mayor que paginas_totales if($pagina_hasta>$total_paginas){
+$pagina_desde-=($pagina_hasta-$total_paginas);
+$pagina_hasta=$total_paginas;
+if($pagina_desde<1){
+$pagina_desde=1;
+}
+}
+
+for ($i=$pagina_desde; $i<=$pagina_hasta; $i++){
+if ($pagina == $i){
+echo "<span class='pnumero' style='color:black' >".$pagina."</span> ";
+}else{
+echo "<span class='active' ><a style='color:blue' href='?pagina=$i'>$i</a></span> ";
+}
+}
+
+if(($pagina + 1)<=$total_paginas) {
+echo " <span class='pactiva'><a style='color:blue' href='?pagina=".($pagina+1)."'>Siguiente &raquo;</a></span>";
+}
+}
+
+echo "</p></center>";
+
+}//fin if admin
+
+include "eliminar_reportes.php";
+    ?>
+  </tbody>
   </table>
 </form>
 </body>
 
+  <?php 
 
 
-
-<?php 
-	include "footer.php";
+  include "footer.php";
+  ?>
 
  ?>
