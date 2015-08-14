@@ -1,5 +1,9 @@
+
+<footer>
+		<p>CSTI</p>
+	</footer>
+
 </div>
-	<footer></footer>
 
 </body>
 </html>

@@ -10,6 +10,7 @@ body {
 .container{
 padding: 0;
 background: #FFFFFA;
+min-height: 800px;
 
 }
 .container2{
@@ -24,10 +25,7 @@ background: #FFFFFA;
 .jumbotron{
 	font-family: 'Alegreya SC', serif;
 	text-align: center;
-	
-
 }
-
  
  .navbar-default{
 	width:auto;
@@ -64,4 +62,29 @@ section {
 }
 .clave{
 	padding-right: 0!important;
+}
+
+legend{
+	text-align: center;
+	
+	color: #0B3B0B;
+}
+
+.btnEstatusStyle{
+	background-color: transparent;
+	border: none;
+	font-weight: bold;
+	margin-left: 50px;
+	color: green;
+}
+.btnEstatusStyle:hover{
+	color: #0B610B;
+	text-decoration: underline;
+
+}
+.separador{
+	border-style: dashed;
+	margin-left: 5%;
+	margin-right: 5%;
+	border-color:#CECEF6 -moz-use-text-color -moz-use-text-color!important ;
 }

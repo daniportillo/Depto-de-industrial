@@ -84,7 +84,7 @@ while ($row = mysqli_fetch_array($result)) {
   <label class="col-md-4 control-label" for="estatusSelect">Estatus:</label>
   <div class="col-md-2">
     <select id="estatusSelect" name="estatusSelect" class="form-control">
-      <option value="Inciado">Inciado</option>
+      <option value="Iniciado">Iniciado</option>
       <option value="En proceso">En proceso</option>
       <option value="Finalizado">Finalizado</option>
     </select>

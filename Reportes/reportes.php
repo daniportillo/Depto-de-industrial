@@ -1,13 +1,27 @@
 <?php 
 
   include "header.php";
-  
-
   // reportes
   include "conexion.php";
+  
   header("Content-Type: text/html;charset=utf-8");
    ini_set("display_errors", false);
 ?>
+   <script type="text/javascript">
+        window.onload =function(){
+          select();
+        }
+        function  select(){
+          $("#tipoSelect").val("<?php echo $tipoReporte; ?>");
+
+        }
+        function cancelar(){
+          window.location.href="index.php";
+        }
+        function actualizar(){
+          window.location.reload();
+        }
+  </script>
   <h3 class="text-center">Listado de reportes</h3>
   <script language="javascript" src="js/reportes.js" type="text/javascript"></script>
   <br>

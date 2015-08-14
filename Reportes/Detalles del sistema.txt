@@ -9,3 +9,9 @@
 -Listado de usuarios:
 	*Paginación
 	*No se ven los carácteres especiales
+-Container debe de tener un min-height
+	*ponerle margin
+-Crear centro de mensajes
+-Buscardor
+-Cambiar listado de tipos de servicios
+
