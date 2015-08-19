@@ -74,22 +74,14 @@ $total_paginas = ceil($total_registros / $registros);
 
   while ($row = mysqli_fetch_array($cad)) {
 ?>
-  <tr> 
-   <td>
-  <div class="row reportes_inicio">
-    <div class="col-md-6 col-md-offset-1">
-      <p><b>Tipo de Servicio: <?php echo utf8_decode($row['tipo'])?></b></p>
-      <b><p><?php echo 'Descripción: '. substr(utf8_decode($row['descripcion']), 0,150) ?>...</p></b> 
-      <b><p><?php echo 'Solicitado por: '.utf8_decode($row['solicitante']).' || Estatus: '.utf8_decode($row['estatus']); ?></p></b>
-      <b><p><?php echo 'Fecha de inicio: '.$row['fecha_inicio']; ?></p></b>
-      <b><p><?php echo 'Fecha de modificacion: '.$row['fecha_mod']; ?></p></b>
-
-    </div>
-  </div>
-    <br>
-  </td>
+ <tr> 
+   <td><b><p><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo utf8_decode($row['solicitante']) ?></p></b> </td>
+  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo substr(utf8_decode($row['tipo']), 0,30) ?></b></td>
+  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><p><?php echo substr(utf8_decode($row['descripcion']), 0,20) ?>...</p></b> </td>
+  <td><b><p><?php echo $row['fecha_inicio']; ?></p></b></td>
+  <td><b><p><?php echo $row['fecha_mod']; ?></p></b></td>
   <td><input type="checkbox" name="reportes[]" value="<?php echo $row["reporte_id"]; ?>" ></td> 
-  </tr>   
+  </tr>    
         
 <?php   
   }
