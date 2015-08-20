@@ -7,10 +7,7 @@
 	*Paginación
 	*No se ven los carácteres especiales
 -Listado de usuarios:
-	*Paginación
-	*No se ven los carácteres especiales
--Container debe de tener un min-height
-	*ponerle margin
+	*Buscador por nombre
 -Crear centro de mensajes
 -Buscardor
 -Cambiar listado de tipos de servicios

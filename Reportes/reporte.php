@@ -11,7 +11,6 @@ if($_SESSION['tipo']!='usuario')
 
 $id_reporte = $_GET['id'];//Obtiene el id del reporte
  
-
 //consulta reporte con id
 	$result= mysqli_query($conn, "SELECT *, DATE_FORMAT(fecha_mod, '%d-%b-%Y') as fecha FROM reportes_industrial WHERE reporte_id =".$_GET['id']);
 
@@ -23,22 +22,70 @@ while ($row = mysqli_fetch_array($result)) {
                 </script>';
       
   }
-	$tipoReporte=$row['tipo'];
+
+	$tipoReporte=$row['tipoServicio'];
+  $tipodeServicio=$row['tipo'];
 ?>
    <script type="text/javascript">
+      //paso variable tiposervicio a var js
+      var selectServicios="<?php echo $tipodeServicio; ?>";
         window.onload =function(){
           select();
         }
-        function  select(){
-          $("#tipoSelect").val("<?php echo $tipoReporte; ?>");
 
+        function  select(){
+          $("#tipoSelect").val("<?php echo $tipoReporte; ?>");//Selecciona valor en el tipo select segun la BD
+          $('#tipoSelectInfraestructura').val("<?php echo $tipodeServicio; ?>");
+          var sInfraestructura=document.getElementById('tipoSelectInfraestructura');//Verifica si hay seleccionado algo del select
+          $('#tipoSelectLimpieza').val("<?php echo $tipodeServicio; ?>");
+          var sLimpieza=document.getElementById('tipoSelectLimpieza');
+          $('#tipoSelectComputo').val("<?php echo $tipodeServicio; ?>");
+          var scomputo=document.getElementById('tipoSelectComputo');
+
+          //Activan el select segun si se habia seleccionado algo o no
+          if (sInfraestructura.selectedIndex>0) {
+            $("#infraestructura").show();
+            $("#limpieza").hide();
+            $("#computo").hide();
+          };
+          if (sLimpieza.selectedIndex>0) {
+            $("#infraestructura").hide();
+            $("#limpieza").show();
+            $("#computo").hide();
+          };
+          if (scomputo.selectedIndex>0) {
+
+            $("#infraestructura").hide();
+            $("#limpieza").hide();
+            $("#computo").show();
+          };
         }
+
         function cancelar(){
           window.location.href="index.php";
         }
         function actualizar(){
-          window.location.reload();
+          //window.location.reload();
         }
+
+        function  mostrar(id){//funcion para cambiar el select secundario dependiendo del tipo de servicio
+          if (id.value=="Infraestructura") {
+            $("#infraestructura").show();
+            $("#limpieza").hide();
+            $("#computo").hide();
+          };
+          if (id.value=="Limpieza") {
+            $("#infraestructura").hide();
+            $("#limpieza").show();
+            $("#computo").hide();
+          };
+          if (id.value=="Equipo de cómputo") {
+            $("#infraestructura").hide();
+            $("#limpieza").hide();
+            $("#computo").show();
+          };
+        }
+
   </script>
 	<form class="form-horizontal" method="POST">
 <fieldset>
@@ -50,23 +97,65 @@ while ($row = mysqli_fetch_array($result)) {
 <div class="form-group">
   <label class="col-md-4 control-label" for="tipoSelect">Tipo de servicio:</label>
   <div class="col-md-5">
-    <select id="tipoSelect" name="tipoSelect" class="form-control">
+    <select id="tipoSelect" name="tipoSelect" class="form-control" onChange="mostrar(this);">
+      <option value="Infraestructura">Infraestructura</option>
+      <option value="Limpieza">Limpieza</option>
+      <option value="Equipo de cómputo">Equipo de cómputo</option>
+    </select>
+  </div>
+</div>
+<!--Tipo de servicio Infraestructura-->
+<div class="form-group" id="infraestructura" style="display: none;">
+  <label class="col-md-4 control-label" for="tipoSelect"></label>
+  <div class="col-md-3">
+    <select id="tipoSelectInfraestructura" name="tipoSelectInfraestructura" class="form-control">
+      <option value="Iluminación">Iluminación</option>
+      <option value="Electricidad">Electricidad</option>
+      <option value="Fallas aire acondicionado">Fallas aire Acondicionado</option>
+      <option value="Falta de mensabancos/sillas">Falta de mensabancos/sillas</option>
+      <option value="Falta de mesas y/o escritorio">Falta de mesas y/o escritorio</option>
+      <option value="Ventanas">Ventanas</option>
+      <option value="Problemas con el contacto eléctrico">Problemas con el contacto eléctrico</option>
+      <option value="Problemas con las llaves de aulas">Problema con las llaves de aulas</option>
+    </select>
+  </div>
+</div>
+
+<!--Tipo de servicio Limpieza-->
+<div class="form-group" id="limpieza" style="display: none;">
+  <label class="col-md-4 control-label" for="tipoSelect"></label>
+  <div class="col-md-3">
+    <select id="tipoSelectLimpieza" name="tipoSelectLimpieza" class="form-control">
+      <option value="Aseo de aula(s)">Aseo de aula(s)</option>
+      <option value="Aseo de cubículos">Aseo de cubículos</option>
+      <option value="Aseo de pasillos">Aseo de pasillos</option>
+      <option value="Aseo de laboratorios">Aseo de laboratorios</option>
+      <option value="Aseo de baños">Aseo de baños</option>
+    </select>
+  </div>
+</div>
+
+<!--Tipo de servicio Computo-->
+<div class="form-group" id="computo" style="display: none;">
+  <label class="col-md-4 control-label" for="tipoSelect"></label>
+  <div class="col-md-5">
+    <select id="tipoSelectComputo" name="tipoSelectComputo" class="form-control">
       <option value="Configuración de Red">Configuración de Red</option>
+      <option value="Instalación de Red">Instalación de Red</option>
+      <option value="Falta de internet">Falta de internet</option>
       <option value="Formateo a equipo de compúto">Formateo a equipo de compúto</option>
       <option value="Instalación de software">Instalación de software</option>
-      <option value="Instalación de Red">Instalación de Red</option>
-      <option value="Instalación de equipo de compúto (impresoras, cañones, étc.)">Instalación de equipo de compúto (impresoras, cañones, étc.)</option>
+      <option value="Instalación de equipo de compúto (impresoras, computadoras)">Instalación de equipo de compúto (impresoras, computadoras)</option>
       <option value="Mantenimiento de equipo de compúto preventivo">Mantenimiento de equipo de compúto preventivo</option>
       <option value="Mantenimiento de equipo de compúto correctivo">Mantenimiento de equipo de compúto correctivo</option>
       <option value="Mantenimiento de equipo de impresoras preventivo">Mantenimiento de equipo de impresoras preventivo</option>
       <option value="Mantenimiento de equipo de impresoras correctivo">Mantenimiento de equipo de impresoras correctivo</option>
-      <option value="Mantenimiento de equipo de cañon preventivo">Mantenimiento de equipo de cañon preventivo</option>
       <option value="Mantenimiento de equipo de cañon correctivo">Mantenimiento de equipo de cañon correctivo</option>
       <option value="Reparación de cables (VGA, Corriente)">Reparación de cables (VGA, Corriente)</option>
-      <option value="Otros">Otros...</option>
     </select>
   </div>
 </div>
+
 
 <!-- Ubicacion-->
 <div class="form-group">
@@ -82,7 +171,7 @@ while ($row = mysqli_fetch_array($result)) {
 <div class="form-group">
   <label class="col-md-4 control-label" for="descripArea">Descripción:</label>
   <div class="col-md-5">                     
-    <textarea class="form-control" id="descripArea" name="descripArea"><?php echo $row['descrip']; ?></textarea>
+    <textarea class="form-control" id="descripArea" name="descripArea" rows="5"><?php echo $row['descrip']; ?></textarea>
   </div>
 </div>
 
@@ -108,19 +197,29 @@ while ($row = mysqli_fetch_array($result)) {
 <?php 
   if (isset($_POST['actualizarbtn'])) {
     
-               $tipo=$_POST['tipoSelect'];
+
+              $tipoServicio=$_POST['tipoSelect'];
+               //Tomo el tipo de servicio especifico segun el servicio seleccionado
+               if ($_POST['tipoSelect']=='Infraestructura') {
+                 $tipo=$_POST['tipoSelectInfraestructura'];
+               }
+               if ($_POST['tipoSelect']=='Limpieza') {
+                 $tipo=$_POST['tipoSelectLimpieza'];
+               }
+               if ($_POST['tipoSelect']=='Equipo de cómputo') {
+                 $tipo=$_POST['tipoSelectComputo'];
+               }
                $ubicacion_reporte=$_POST['ubicaciontxt'];
                $descrp_reporte=$_POST['descripArea'];
 
             $sql="UPDATE reportes_industrial  
-            SET  tipo='".$tipo."', ubicacion='".$ubicacion_reporte."', descrip='".$descrp_reporte."', fecha_mod= CURRENT_TIMESTAMP
-            WHERE reporte_id='".$id."'";
+            SET  tipoServicio='".$tipoServicio."', tipo='".$tipo."', ubicacion='".$ubicacion_reporte."', fecha_mod=CURRENT_TIMESTAMP, descrip='".$descrp_reporte."'
+            WHERE reporte_id='".$id_reporte."' ";
 
             mysqli_query($conn, $sql);
             echo'<script type="text/javascript">
                 alert("Se ha actualizado el reporte.");
                 </script>';
-               
             
             mysqli_close($conn);
   }

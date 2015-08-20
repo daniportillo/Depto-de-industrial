@@ -88,3 +88,9 @@ legend{
 	margin-right: 5%;
 	border-color:#CECEF6 -moz-use-text-color -moz-use-text-color!important ;
 }
+form{
+	margin: 20px;
+}
+.config{
+	padding: 20px;
+}
