@@ -52,7 +52,7 @@ if(!isset($_SESSION['nombre']))
              <ul class="nav navbar-nav">
                 <!--Menu para todo usuarios-->
                <li><a href="index.php"><span class="fa fa-home"> </span>   Inicio</a></li>
-               <li><a href="mensajes.php"><span class="glyphicon glyphicon-envelope"></span> Mensajes</a> </li>
+              <!-- <li><a href="mensajes.php"><span class="glyphicon glyphicon-envelope"></span> Mensajes</a> </li>-->
                  <!--Menu solo para administradores-->
                    <?php if ($_SESSION['tipo']=='administrador') {
                      echo " 
@@ -65,6 +65,7 @@ if(!isset($_SESSION['nombre']))
                  <!--Menu para usuarios normales-->
                    <?php if ($_SESSION['tipo']=="usuario") {
                    echo "
+                   <li><a href='mensajeUsuario.php''><span class='glyphicon glyphicon-envelope'></span> Mensajes</a></li>
                    <li><a href='nuevoreporte.php''><span class='fa fa-file-text'></span> Nuevo Reporte</a></li>
                    <li><a href='configuracion_personal.php''><span class='fa fa-cogs'></span> Configuración personal</a></li>";
                     } ?>

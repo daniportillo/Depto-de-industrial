@@ -15,34 +15,6 @@ Maestro, el problema, descripción, fecha inicio, modificación
 -Cuando se ponga un estatus finalizado en el reporte mandar un mail al correo personal del solicitante que se finalizó el problema
 
 
---Usuarios
-
--En la creacion de Reportes cambiar en el campo de Tipo de servicio:
-
-
-Instalación de equipo de computo(impresoras y computadoras)
-
-Quitar: mantenimiento del cañon
-
-Agregar:
-Infraestructura (iluminacion, 
-electricidad, aire acondicionado, 
-falta de mesabancos/sillas, 
-escritorio, mesas, ventanas, 
-problemas de contacto, 
-llaves de puertas, )
-
-Limpieza(aseo de aulas, 
-cubículos, pasillos, 
-laboratorios, baños)
-
-Equipo de computo(no hay internet)
-
-Dividir el tipo de servicio en:
-
-Infraestructura
-Limpieza
-Equipo de computo
 
 ---Pagina del departamento:---
 Cambiar el diseño T.T

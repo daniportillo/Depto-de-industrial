@@ -11,34 +11,17 @@
 	<br>
 <!--Formulario para recoger info de los reportes-->
 	<form method="POST" class="form-inline" role="form">
+		<!--Div para cambiar de estatus, solo opción administrador-->
+		<?php if ($_SESSION['tipo']=='administrador'): ?>
 		<div class="row">
-<!--Div para cambiar de estatus, solo opción administrador-->
-<?php if ($_SESSION['tipo']=='administrador'): ?>
+
+
 		<div class="form-group col-md-offset-2">
 			<button class="btnEstatusStyle" name="btnProceso">En proceso</button>
 			<button class="btnEstatusStyle" name="btnFinalizado">Finalizado</button>
 		</div>
 <?php endif ?>
 	
-
-		<div class="form-group">
-			<!--control de la pos del div segun el tipo de usuario-->
-			<!--para admin-->
-			<?php if ($_SESSION['tipo']=='administrador'): ?>
-				<div class="col-md-offset-7 clave">
-			<?php endif ?>
-			<!--Para usuario normal-->
-			<?php if ($_SESSION['tipo']=='usuario'): ?>
-				<div class="col-md-offset-9 clave">
-			<?php endif ?>
-			
-				<input id="clavetxt" name="clavetxt" placeholder="Palabra clave" class="form-control input-md" type="text">
-				<button type="submit" for="#clavetxt" class="btn btn-primary">
-      			<span class="glyphicon glyphicon-search"></span> Buscar
-   		      </button>
-			</div>
-		</div>
-	</div>
 	<hr class="separador">	
 	
 <?php
@@ -57,7 +40,7 @@ else
 {
 $inicio = ($pagina-1) * $registros;
 } 
-	$result = "SELECT r.reporte_id, u.name as solicitante, r.tipo, r.ubicacion, r.fecha_mod, r.estatus, SUBSTRING(r.descrip, 1,200) as descripcion 
+	$result = "SELECT r.reporte_id, u.name as solicitante, r.tipoServicio, r.tipo, r.ubicacion, r.fecha_mod, r.estatus, SUBSTRING(r.descrip, 1,200) as descripcion 
 	FROM reportes_industrial r, usuarios_industrial u 
 	WHERE r.user_id=u.user_id AND r.estatus!='Finalizado'
 	ORDER BY r.fecha_mod desc limit ".$inicio." , ".$registros." ";
@@ -74,18 +57,26 @@ $total_paginas = ceil($total_registros / $registros);
 	while ($row = mysqli_fetch_array($cad)) {
 ?>
 	<div class="row reportes_inicio">
-		<div class="col-md-8 col-md-offset-1">
+		<div class="col-md-10 col-md-offset-1">
 			<div class="col-md-1">
 			<input type="checkbox" name="reports[]" value="<?php echo $row['reporte_id']; ?>" >
 			</div>
-				<div class="col-md-10">
-					<b><p class="text-justify"><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo $row['tipo'].' || Ubicación: '.$row['ubicacion'].' || '.$row['fecha_mod'];?></a></p></b>
-					<p class="text-justify"><?php echo 'Solicitado por: '.$row['solicitante'].' || Estatus: '.$row['estatus']; ?></p>
-					<p class="text-justify"><?php echo 'Descripción: '.$row['descripcion']; ?>...</p>	
-				</div>
+			<div class="col-md-8">
+				<b><p class="text-justify"><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo $row['tipoServicio'].': '.$row['tipo'].' || Ubicación: '.$row['ubicacion'];?></a></p></b>
+				<p class="text-justify"><?php echo 'Solicitado por: '.$row['solicitante'].' || Estatus: '.$row['estatus'].' || '.$row['fecha_mod'];?></p>
+				<p class="text-justify"><?php echo 'Descripción: '.$row['descripcion']; ?>...</p>	
+			</div>
+			<div class="col-md-2">
+				<br>
+
+			<button type="button" class="btn btnECorreo" data-toggle="modal" data-target="#enviarCorreoModal" data-keyboard="true"><span class="glyphicon glyphicon-pencil"></span> Enviar Correo</button>
+			</div>
 		</div>
 	</div>
-	<br>
+	<hr class="separador">	
+	
+
+
 <?php
 //llamamos las funciones de actualizar estado
 include "functions/estatus_change.php";	
@@ -134,6 +125,7 @@ echo "</p></center>";
 }//fin if admin
 ?> 
 
+
 <?php
 
 	//Listado de reportes para usuarios normales
@@ -175,7 +167,8 @@ $total_paginas = ceil($total_registros / $registros);
 			<p class="text-justify"><?php echo 'Descripción: '.$row['descripcion']; ?>...</p>	
 		</div>
 	</div>
-		<br>
+	<hr class="separador">	
+	
         
 <?php		
 	}
@@ -229,3 +222,37 @@ echo "</p></center>";
 	include "footer.php";
 
  ?>
+<!-- Modal -->
+  <div class="modal fade" id="enviarCorreoModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        	<h3><span class="glyphicon glyphicon-envelope"></span> Enviar correo</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" style="padding:10px 50px;">
+          <form role="form-horizontal">
+
+          	<!--Asunto-->
+            <div class="form-group">
+              <label for="txtAsunto">Asunto:</label>
+              <input type="text" class="form-control col-md-6" id="txtAsunto" name="txtAsunto">
+            </div>
+            <!--Mensaje-->
+            <div class="form-group">
+              <label for="txtAreaMensaje"> Mensaje:</label>
+              <textarea id="txtAreaMensaje" name="txtAreaMensaje" class="form-control" rows="5"></textarea>
+            </div>
+              
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+	 <button type="submit" class="btn btn-primary btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Enviar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 

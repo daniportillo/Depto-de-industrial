@@ -2,18 +2,16 @@
 include "header.php";
 
 include "conexion.php";
-
 if($_SESSION['tipo']!='usuario') 
 {
   header('Location:index.php'); 
   exit();
 }
 
-$id_reporte = $_GET['id'];//Obtiene el id del reporte
- 
-//consulta reporte con id
-	$result= mysqli_query($conn, "SELECT *, DATE_FORMAT(fecha_mod, '%d-%b-%Y') as fecha FROM reportes_industrial WHERE reporte_id =".$_GET['id']);
-
+$idReporte = $_GET['id'];
+$url_actual = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+//consulta noticia con id
+  $result= mysqli_query($conn, "SELECT *, DATE_FORMAT(fecha_mod, '%d-%b-%Y') as fecha FROM reportes_industrial WHERE reporte_id =".$_GET['id']);
 
 while ($row = mysqli_fetch_array($result)) {
   if ($row['user_id']!=$id) {//Verifica que el reporte sea del usuario logeado
@@ -22,13 +20,16 @@ while ($row = mysqli_fetch_array($result)) {
                 </script>';
       
   }
-
-	$tipoReporte=$row['tipoServicio'];
+  $estatus=$row['estatus'];
+  $tipoReporte=$row['tipoServicio'];
   $tipodeServicio=$row['tipo'];
 ?>
    <script type="text/javascript">
       //paso variable tiposervicio a var js
       var selectServicios="<?php echo $tipodeServicio; ?>";
+      var urlActReporte="<?php echo $url_actual; ?>";
+      var idReporteActual="<?php echo $idReporte; ?>";
+
         window.onload =function(){
           select();
         }
@@ -43,17 +44,17 @@ while ($row = mysqli_fetch_array($result)) {
           var scomputo=document.getElementById('tipoSelectComputo');
 
           //Activan el select segun si se habia seleccionado algo o no
-          if (sInfraestructura.selectedIndex>0) {
+          if (sInfraestructura.selectedIndex!=-1) {
             $("#infraestructura").show();
             $("#limpieza").hide();
             $("#computo").hide();
           };
-          if (sLimpieza.selectedIndex>0) {
+          if (sLimpieza.selectedIndex!=-1) {
             $("#infraestructura").hide();
             $("#limpieza").show();
             $("#computo").hide();
           };
-          if (scomputo.selectedIndex>0) {
+          if (scomputo.selectedIndex!=-1) {
 
             $("#infraestructura").hide();
             $("#limpieza").hide();
@@ -61,12 +62,6 @@ while ($row = mysqli_fetch_array($result)) {
           };
         }
 
-        function cancelar(){
-          window.location.href="index.php";
-        }
-        function actualizar(){
-          //window.location.reload();
-        }
 
         function  mostrar(id){//funcion para cambiar el select secundario dependiendo del tipo de servicio
           if (id.value=="Infraestructura") {
@@ -87,11 +82,12 @@ while ($row = mysqli_fetch_array($result)) {
         }
 
   </script>
-	<form class="form-horizontal" method="POST">
+  <form class="form-horizontal" method="POST">
 <fieldset>
 
 
-	<legend>Nuevo reporte</legend>
+  <legend>Nuevo reporte</legend>
+
 
 <!-- Tipo servicio -->
 <div class="form-group">
@@ -156,13 +152,12 @@ while ($row = mysqli_fetch_array($result)) {
   </div>
 </div>
 
-
 <!-- Ubicacion-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="ubicaciontxt">Ubicacion:</label>  
   <div class="col-md-3">
   <input id="ubicaciontxt" name="ubicaciontxt" placeholder="Ubicacion de la solicitud de servicio" class="form-control input-md" required="" type="text" 
-  	value="<?php echo $row['ubicacion']; ?>">
+    value="<?php echo $row['ubicacion']; ?>">
     
   </div>
 </div>
@@ -175,20 +170,24 @@ while ($row = mysqli_fetch_array($result)) {
   </div>
 </div>
 
-<!--Estatus-->
+<!-- Estatus Select -->
 <div class="form-group">
-	<label class="col-md-4 control-label" for="estatustxt">Estatus:</label>
-	<div class="col-md-2">
-	<input id="estatustxt" name="estatustxt" type="text" class="form-control input-md" value="<?php echo $row['estatus']; ?>" disabled>
-	</div>
+  <label class="col-md-4 control-label" for="estatusSelect" >Estatus:</label>
+  <div class="col-md-2">
+    <select id="estatusSelect" name="estatusSelect" class="form-control" disabled>
+      <option value="Iniciado">Iniciado</option>
+      <option value="En proceso">En proceso</option>
+      <option value="Finalizado">Finalizado</option>
+    </select>
+  </div>
 </div>
 
 <!-- Botones -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="cancelarbtn"></label>
   <div class="col-md-8">
-    <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
-    <button id="actualizarbtn" name="actualizarbtn" class="btn btn-success" onclick="actualizar()">Actualizar</button>
+    <input id="cancelarbtn" name="cancelarbtn" type="button" class="btn btn-danger" onclick="window.location='index.php';" value="Cancelar">
+    <button id="actualizarbtn" name="actualizarbtn" class="btn btn-success" >Actualizar</button>
   </div>
 </div>
 
@@ -197,8 +196,7 @@ while ($row = mysqli_fetch_array($result)) {
 <?php 
   if (isset($_POST['actualizarbtn'])) {
     
-
-              $tipoServicio=$_POST['tipoSelect'];
+               $tipoServicio=$_POST['tipoSelect'];
                //Tomo el tipo de servicio especifico segun el servicio seleccionado
                if ($_POST['tipoSelect']=='Infraestructura') {
                  $tipo=$_POST['tipoSelectInfraestructura'];
@@ -209,17 +207,23 @@ while ($row = mysqli_fetch_array($result)) {
                if ($_POST['tipoSelect']=='Equipo de cómputo') {
                  $tipo=$_POST['tipoSelectComputo'];
                }
+
                $ubicacion_reporte=$_POST['ubicaciontxt'];
                $descrp_reporte=$_POST['descripArea'];
+               
 
             $sql="UPDATE reportes_industrial  
-            SET  tipoServicio='".$tipoServicio."', tipo='".$tipo."', ubicacion='".$ubicacion_reporte."', fecha_mod=CURRENT_TIMESTAMP, descrip='".$descrp_reporte."'
-            WHERE reporte_id='".$id_reporte."' ";
+            SET  tipoServicio='".$tipoServicio."', tipo='".$tipo."', ubicacion='".$ubicacion_reporte."', descrip='".$descrp_reporte."',fecha_mod= CURRENT_TIMESTAMP
+            WHERE reporte_id='".$idReporte."'";
 
             mysqli_query($conn, $sql);
+     
+            
             echo'<script type="text/javascript">
                 alert("Se ha actualizado el reporte.");
+                window.location=urlActReporte;
                 </script>';
+                
             
             mysqli_close($conn);
   }

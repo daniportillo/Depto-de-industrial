@@ -1,10 +1,6 @@
 <?php
 
 include('header.php');
-ini_set("display_errors", false);
-
-$conn = mysql_connect("localhost","root","");
-mysql_select_db("csti_db",$conn);
 
 
 if(isset($_POST["submit"]) && $_POST["submit"]!="") {
@@ -32,8 +28,8 @@ header("Location:reportes.php");
 
 $rowCount = count($_POST["reportes"]);
 for($i=0;$i<$rowCount;$i++) {
-$result = mysql_query("SELECT * FROM reportes_industrial WHERE reporte_id='" . $_POST["reportes"][$i] . "'");
-$row[$i]= mysql_fetch_array($result);
+$result = mysqli_query($conn,"SELECT * FROM reportes_industrial WHERE reporte_id='" . $_POST["reportes"][$i] . "'");
+$row[$i]= mysqli_fetch_array($result);
 ?>
 <tr>
 <td>
@@ -46,19 +42,31 @@ $row[$i]= mysql_fetch_array($result);
   <div class="col-md-5">
     <select  name="tipo[]" class="form-control">
       <option selected><?php echo $row[$i]['tipo']; ?></option></option>
+      <option value="Iluminación">Iluminación</option>
+      <option value="Electricidad">Electricidad</option>
+      <option value="Fallas aire acondicionado">Fallas aire Acondicionado</option>
+      <option value="Falta de mensabancos/sillas">Falta de mensabancos/sillas</option>
+      <option value="Falta de mesas y/o escritorio">Falta de mesas y/o escritorio</option>
+      <option value="Ventanas">Ventanas</option>
+      <option value="Problemas con el contacto eléctrico">Problemas con el contacto eléctrico</option>
+      <option value="Problemas con las llaves de aulas">Problema con las llaves de aulas</option>
+      <option value="Aseo de aula(s)">Aseo de aula(s)</option>
+      <option value="Aseo de cubículos">Aseo de cubículos</option>
+      <option value="Aseo de pasillos">Aseo de pasillos</option>
+      <option value="Aseo de laboratorios">Aseo de laboratorios</option>
+      <option value="Aseo de baños">Aseo de baños</option>
       <option value="Configuración de Red">Configuración de Red</option>
+      <option value="Instalación de Red">Instalación de Red</option>
+      <option value="Falta de internet">Falta de internet</option>
       <option value="Formateo a equipo de compúto">Formateo a equipo de compúto</option>
       <option value="Instalación de software">Instalación de software</option>
-      <option value="Instalación de Red">Instalación de Red</option>
-      <option value="Instalación de equipo de compúto (impresoras, cañones, étc.)">Instalación de equipo de compúto (impresoras, cañones, étc.)</option>
+      <option value="Instalación de equipo de compúto (impresoras, computadoras)">Instalación de equipo de compúto (impresoras, computadoras)</option>
       <option value="Mantenimiento de equipo de compúto preventivo">Mantenimiento de equipo de compúto preventivo</option>
       <option value="Mantenimiento de equipo de compúto correctivo">Mantenimiento de equipo de compúto correctivo</option>
       <option value="Mantenimiento de equipo de impresoras preventivo">Mantenimiento de equipo de impresoras preventivo</option>
       <option value="Mantenimiento de equipo de impresoras correctivo">Mantenimiento de equipo de impresoras correctivo</option>
-      <option value="Mantenimiento de equipo de cañon preventivo">Mantenimiento de equipo de cañon preventivo</option>
       <option value="Mantenimiento de equipo de cañon correctivo">Mantenimiento de equipo de cañon correctivo</option>
       <option value="Reparación de cables (VGA, Corriente)">Reparación de cables (VGA, Corriente)</option>
-      <option value="Otros">Otros...</option>
     </select>
   </div>
 </div>

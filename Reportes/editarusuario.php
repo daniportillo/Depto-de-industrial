@@ -1,21 +1,18 @@
 <?php
 
 include('header.php');
-ini_set("display_errors", false);
 
-$conn = mysql_connect("localhost","root","");
-mysql_select_db("csti_db",$conn);
 
 
 if(isset($_POST["submit"]) && $_POST["submit"]!="") {
 $usersCount = count($_POST["name"]);
 for($i=0;$i<$usersCount;$i++) {
-mysql_query("UPDATE usuarios_industrial set name='" . $_POST["name"][$i] . "', userName='" . $_POST["userName"][$i] . "', tipo='" . $_POST["tipo"][$i] . "', password='" . $_POST["password"][$i] .  "' WHERE user_id='" . $_POST["user_id"][$i] . "'");
+mysqli_query($conn,"UPDATE usuarios_industrial set name='" . $_POST["name"][$i] . "', userName='" . $_POST["userName"][$i] . "', tipo='" . $_POST["tipo"][$i] . "', password='" . $_POST["password"][$i] .  "' WHERE user_id='" . $_POST["user_id"][$i] . "'");
 }
 header("Location:configuracion.php");
 }  
 ?>
-<form name="frmUser" method="post" action="">
+<form name="frmUser" method="post" >
 
 
 <h1>Modificacion de datos</h1>
@@ -30,8 +27,8 @@ header("Location:configuracion.php");
 $rowCount = count($_POST["users"]);
 
 for($i=0;$i<$rowCount;$i++) {
-$result = mysql_query("SELECT * FROM usuarios_industrial WHERE user_id='" . $_POST["users"][$i] . "'");
-$row[$i]= mysql_fetch_array($result);
+$result = mysqli_query($conn,"SELECT * FROM usuarios_industrial WHERE user_id='" . $_POST["users"][$i] . "'");
+$row[$i]= mysqli_fetch_array($result);
 ?>
 <tr>
 <td>
@@ -39,11 +36,7 @@ $row[$i]= mysql_fetch_array($result);
 <tr>
 <td><label>Nombre</label></td>
 <td>
-<div class="form-group"> 
-  <div class="col-md-3">
-  <input name="name[]" class="form-control input-md" type="text" value="<?php echo $row[$i]['name']; ?>">
- </div>
-</div>		
+  <input name="name[]" class="form-control" type="text" value="<?php echo $row[$i]['name']; ?>">	
 </td>
 </tr>
 
@@ -69,8 +62,6 @@ $row[$i]= mysql_fetch_array($result);
       <option value="usuario">usuario</option>
       <option value="administrador">administrador</option>
     </select>
-
-
   </div>
 </div>
 </td>
@@ -103,7 +94,7 @@ $row[$i]= mysql_fetch_array($result);
 </form>
 
 
-</div>
+<?php 
 
-</body>
-</html>
+include "footer.php";
+ ?>

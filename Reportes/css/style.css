@@ -94,3 +94,7 @@ form{
 .config{
 	padding: 20px;
 }
+.btnECorreo{
+	background-color: transparent;
+	color:#0B2161;
+}
