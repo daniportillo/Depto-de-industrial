@@ -32,7 +32,11 @@
   <table class="table table-hover table-bordered table-striped">
     <thead>
       <tr>
-        <th>Informacion del Reporte</th>
+        <th>Maestro</th>
+        <th>Problema</th>
+        <th>Descripción</th>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Modificación</th>
         <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar" >
            <input name="update" value="Editar" onClick="setUpdateAction();" type="button" class="btn btn-primary">
         <input class="btn btn-danger"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
