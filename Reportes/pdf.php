@@ -1,14 +1,12 @@
 <?php
-ini_set("display_errors", false);
-$conn = mysql_connect("localhost","root","");
-mysql_select_db("csti_db",$conn);
+include "conexion.php";
 
 
 if ($_POST['pdf']) {
     $ids = implode(',', $_POST['reportes']);
-$result = mysql_query("SELECT * FROM reportes_industrial WHERE reporte_id in ($ids)");
+$result = mysqli_query($conn,"SELECT * FROM reportes_industrial WHERE reporte_id in ($ids)");
    $i=0;
-while($row = mysql_fetch_array($result)) {
+while($row = mysqli_fetch_array($result)) {
       if($i%2==0)
    
     $content = "
@@ -38,7 +36,7 @@ titulo{
     <br>
     <br>
     <br>
-    <h4 margin-left: 15px>Tipo de trabajo: $row[tipo]</h4>
+    <h4 margin-left: 15px>Tipo de trabajo: $row[tipoServicio]</h4>
     <h4 margin-left: 15px>Ubicación: $row[ubicacion]</h4>
     <h4 margin-left: 15px>Descripcion del trabajo:</h4>
     <p>$row[descrip]</p>
