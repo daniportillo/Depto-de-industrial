@@ -24,8 +24,8 @@
 				<div class="form-group">
 	   				<input type="password" name="password" placeholder="Contraseña" required class="form-control input-lg" />
 				</div>
-				
-				<a href="#">¿Olvidaste tu contraseña?</a>
+				<button class="btn btnResetearPass" data-toggle="modal" data-target="#resetearPass" data-keyboard="true">¿Olvidaste tu contraseña?</button>
+				<!--<a href="#" data-toggle="modal" data-target="#resetearPass" data-keyboard="true" >¿Olvidaste tu contraseña?</a>-->
 				
 				<button type="submit" name="go" class="btn btn-lg btn-block btn-success">Iniciar Sesión</button>
 			</section>
@@ -87,3 +87,53 @@ if (isset($_POST['go']))
   mysqli_close($conn);
     }
 ?>
+<!-- Modal -->
+  <div class="modal fade" id="resetearPass" role="dialog">
+    <div class="modal-dialog ">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        	<h3 class="text-center" style="color:#819FF7; font-family:Impact">Reseteo de contraseña</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body" style="padding:10px 50px;">
+          <form id="frmRestablecer" role="form-horizontal" action="validaremail.php" method="POST">
+
+          	<!--email-->
+            <div class="form-group">
+              <label for="txtAsunto">Escribe el e-mail asociado a tu cuenta para recuperar tu contraseña:</label>
+              <input type="email" class="form-control col-md-4" id="email" name="email" required>
+            </div>
+              <br>
+              <br>
+
+            <div class="form-group">
+       		 <input type="submit" class="btn btn-primary " value="Recuperar contraseña" >
+      		</div>
+          
+          </form>
+          <div id="mensaje"></div>
+        </div>
+      </div>
+      
+    </div>
+
+    <script>
+  $(document).ready(function(){
+    $("#frmRestablecer").submit(function(event){
+      event.preventDefault();
+      $.ajax({
+        url:'validaremail.php',
+        type:'post',
+        dataType:'json',
+        data:$("#frmRestablecer").serializeArray()
+      }).done(function(respuesta){
+        $("#mensaje").html(respuesta.mensaje);
+        $("#email").val('');
+      });
+    });
+  });
+</script>
+
+  </div> 

@@ -60,3 +60,12 @@ box-shadow: 10px 12px 15px 0px rgba(0,0,0,0.38);
 		color: #fff;	
 	}
 
+.btnResetearPass{
+	background-color: transparent;
+	color: blue;
+	font-weight: bold;
+}
+.btnResetearPass:hover{
+color:#819FF7;
+
+}
