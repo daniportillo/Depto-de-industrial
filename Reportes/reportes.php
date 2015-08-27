@@ -25,7 +25,14 @@
   <h3 class="text-center">Listado de reportes</h3>
   <script language="javascript" src="js/reportes.js" type="text/javascript"></script>
   <br>
-  
+  <form method="GET" action="" onSubmit="return validarForm(this);" >
+
+<input type="text" placeholder="Buscar Reporte(s)" name="palabra" class="form-control input">
+
+<input type="submit" value="Buscar" name="buscar" class="btn btn-primary">
+
+<?php include('buscador.php'); ?>
+</form>
 
   <form name="frmUser" method="post" action="pdf.php" >
        

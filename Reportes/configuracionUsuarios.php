@@ -1,6 +1,6 @@
 <?php 
 
-	include "header.php";
+  include "header.php";
 //ini_set("display_errors", false);
 
 //validamos si se ha hecho o no el inicio de sesion correctamente
@@ -25,6 +25,16 @@ $tipo = $_SESSION['nombre'];
  <h3 text align="center";>Lista de usuarios registrados</h3>
  <br>
  
+<form method="GET" action="" onSubmit="return validarForm(this);" >
+
+<input type="text" placeholder="Buscar Maestros" name="palabra" class="form-control input">
+
+<input type="submit" value="Buscar" name="buscar" class="btn btn-primary">
+
+<?php include('buscadorusuarios.php'); ?>
+</form>
+
+
 <!--Tabla de Usuarios-->
 <form name="frmUser" method="post" action="">
        
@@ -88,9 +98,9 @@ $total_paginas = ceil($total_registros / $registros);
       <?php     
     $i++;    
         }      
-  		include('eliminar.php');   
+      include('eliminar.php');   
    
-		?>
+    ?>
     </tbody>
   </table>
 </form>
@@ -138,6 +148,6 @@ echo "</p></center>";
 </body>
 
 <?php
-	include "footer.php";
+  include "footer.php";
  ?>
  </div>
