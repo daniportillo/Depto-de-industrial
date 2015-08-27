@@ -88,7 +88,7 @@ $total_paginas = ceil($total_registros / $registros);
 ?>
  <tr> 
   <td align="center"><?php echo $row['solicitante']; ?></td>
-<td align="center"><?php echo $row['tipoServicio']; ?></td>
+<td align="center"><?php echo $row['tipo']; ?></td>
 <td align="center"><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo $row['descripcion']; ?></td>
 <td align="center"><?php echo $row['fecha_inicio']; ?></td>
 <td align="center"><?php echo $row['fecha_mod']; ?></td>
