@@ -58,7 +58,12 @@ if(!isset($_SESSION['nombre']))
                      echo " 
                        <li><a href='nuevo_usuario.php'><span class='fa fa-user-plus'></span>  Nuevo Usuario</a></li>
                        <li><a href='reportes.php'><span class='fa fa-file-text'></span>  Reportes</a></li>
-                       <li><a href='configuracion.php'><span class='fa fa-cogs'></span> Configuracion</a></li>
+                       <li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href='configuracion.php'><span class='fa fa-cogs'></span> Configuracion</a>
+                        <ul class='dropdown-menu submenuConfig'>
+                          <li class='submenuConfig'><a href='configuracion.php' >Personal</a></li>
+                          <li class='submenuConfig'><a href='configuracionUsuarios.php' >Usuarios</a></li>
+                        </ul>
+                       </li>
                        ";
                    } ?>
         

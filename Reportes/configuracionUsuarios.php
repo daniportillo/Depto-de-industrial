@@ -2,7 +2,6 @@
 
 	include "header.php";
 //ini_set("display_errors", false);
-
 //validamos si se ha hecho o no el inicio de sesion correctamente
 
 //si no se ha hecho la sesion nos regresará a login.php
@@ -11,13 +10,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
   header('Location:index.php'); 
   exit();
 }
-$tipo = $_SESSION['nombre'];
 ?>
-<div class="container config">
-  <ul class="nav nav-pills">
-    <li ><a href="configuracion.php">Configuración Personal</a></li>
-    <li class="active"> <a href="configuracionUsuarios.php">Configuración Usuarios</a></li>
-  </ul>
 
 <script language="javascript" src="js/users.js" type="text/javascript"></script>
 
@@ -26,7 +19,7 @@ $tipo = $_SESSION['nombre'];
  <br>
  
 <!--Tabla de Usuarios-->
-<form name="frmUser" method="post" action="">
+<form name="frmUser" method="POST" >
        
   <table class="table table-hover table-bordered table-striped">
     <thead>
@@ -35,7 +28,7 @@ $tipo = $_SESSION['nombre'];
         <th>Usuario</th>
         <th>Tipo</th>
         <th>E-mail</th>
-        <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar">
+        <th><button class="btn btn-danger" id="eliminar" name="eliminar" >Eliminar</button>
         <input name="update" value="Editar" onClick="setUpdateAction();" type="button" class="btn btn-primary">
       </th>
       </tr>
@@ -87,9 +80,9 @@ $total_paginas = ceil($total_registros / $registros);
          
       <?php     
     $i++;    
-        }      
-  		include('eliminar.php');   
-   
+            }      
+mysqli_close($conn);
+
 		?>
     </tbody>
   </table>
@@ -135,9 +128,19 @@ echo "</p></center>";
 
 
  ?>
+
 </body>
 
 <?php
+include "conexion.php";
+if (isset($_POST['eliminar']) && !empty($_POST['users'])) {
+        $ids = implode(',', $_POST['users']);
+    $query="DELETE FROM usuarios_industrial WHERE user_id in ($ids)";    
+    //$resultado=$conn->query($query);
+    mysqli_query($conn,$query) or die ("Error".mysqli_error($conn));
+     
+  } 
+
+
 	include "footer.php";
  ?>
- </div>

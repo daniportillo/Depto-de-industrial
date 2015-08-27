@@ -101,3 +101,13 @@ form{
 .btnResetearPass{
 	background-color: red;
 }
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover{
+	background:#000057!important;
+}
+.submenuConfig, .submenuConfig >a {
+ background:#000057!important;
+ color: white!important;
+}
+.submenuConfig >a:hover{
+	color:green!important;
+}

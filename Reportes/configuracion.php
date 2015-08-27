@@ -22,15 +22,13 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
           window.location.href="configuracion.php";
         }
   </script>
-<!--Sub menu-->
-<ul class="nav nav-pills config">
-    <li class="active"><a href="configuracion.php">Configuración Personal</a></li>
-    <li > <a href="configuracionUsuarios.php">Configuración Usuarios</a></li>
-  </ul>
 
 
 <!--configuracion personal-->
   <form class="form-horizontal"  method="POST">
+    
+    <legend>Configuración personal</legend>
+    
 <fieldset>
 
 
@@ -59,7 +57,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="userNametxt">Nombre de usuario:</label>  
   <div class="col-md-4">
-  <input id="userNametxt" name="userNametxt" placeholder="Escriba nombre de usuario" class="form-control input-md" type="text" 
+  <input id="userNametxt" name="userNametxt" placeholder="Escriba nombre de usuario" class="form-control input-md" type="text" required 
     value="<?=$user?>">
     
   </div>
@@ -69,7 +67,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="passtxt">Contraseña anterior:</label>  
   <div class="col-md-4">
-  <input id="passViejatxt" name="passViejatxt" placeholder="Contraseña anterior" class="form-control input-md" type="password">
+  <input id="passViejatxt" name="passViejatxt" placeholder="Contraseña anterior" class="form-control input-md" type="password" required>
     
   </div>
 </div>
@@ -78,7 +76,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="passtxt">Nueva contraseña:</label>  
   <div class="col-md-4">
-  <input id="passNuevatxt" name="passNuevatxt" placeholder="Nueva contraseña" class="form-control input-md" type="password">
+  <input id="passNuevatxt" name="passNuevatxt" placeholder="Nueva contraseña" class="form-control input-md" type="password" required>
     
   </div>
 </div>
@@ -87,7 +85,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="emailtxt">E-mail:</label>  
   <div class="col-md-4">
-  <input id="emailtxt" name="emailtxt" placeholder="Escriba e-mail" class="form-control input-md" type="email" 
+  <input id="emailtxt" name="emailtxt" placeholder="Escriba e-mail" class="form-control input-md" type="email" required
     value="<?=$mail?>">
     
   </div>
