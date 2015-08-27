@@ -46,7 +46,7 @@
         <th>Fecha de Modificación</th>
         <th>Estatus</th>
         <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar" >
-        <input class="btn btn-danger"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
+        <input class="btn btn-primary"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
         </th>
       </tr>
     </thead>
