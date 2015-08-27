@@ -3,9 +3,9 @@
 //mysql_select_db("csti_db1",$conn);
 include "conexion.php";
 //
-if($_GET['buscar']) {   ?>
+if(isset($_GET['buscar'])) {   ?>
 
-<form name="frmUser" method="post" action="pdf.php" >
+<form name="frmUser" method="get" action="" >
  <script language="javascript" src="js/reportes.js" type="text/javascript"></script>      
   <table class="table table-hover table-bordered table-striped">
     <thead>
@@ -17,7 +17,7 @@ if($_GET['buscar']) {   ?>
         <th>Fecha de Modificación</th>
          <th>Estatus</th>
           <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar">
-        <input class="btn btn-primary"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
+        <input class="btn btn-primary"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf2.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
         </th>
          </tr>
     </thead>
@@ -33,7 +33,7 @@ $buscar = $_GET["palabra"];
 
 $consulta_mysql=mysqli_query($conn,"SELECT r.reporte_id, u.name as solicitante, r.tipoServicio, r.tipo, r.ubicacion, r.fecha_mod, r.fecha_inicio, r.estatus, SUBSTRING(r.descrip, 1,20) 
   as descripcion 	FROM reportes_industrial r, usuarios_industrial u WHERE r.user_id=u.user_id AND u.name   like '%$buscar%' OR 
-   r.user_id=u.user_id AND r.tipoServicio OR r.user_id=u.user_id AND r.descrip like '%$buscar%' ORDER BY r.fecha_mod ");
+   r.user_id=u.user_id AND r.tipo OR r.user_id=u.user_id AND r.descrip like '%$buscar%' ORDER BY r.fecha_mod ");
 while($row = mysqli_fetch_array($consulta_mysql)) {
 
 ?> 

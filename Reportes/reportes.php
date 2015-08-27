@@ -57,7 +57,7 @@
   //Muestra de reportes para usuarios administradores
 if ($_SESSION['tipo']=='administrador') {
   
-$registros=4;
+$registros=15;
   @$pagina = $_GET ['pagina'];
 
 if (!isset($pagina))

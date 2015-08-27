@@ -3,7 +3,7 @@
 //mysql_select_db("csti_db1",$conn);
 include "conexion.php";
 
-if($_GET['buscar']) {   ?>
+if(isset($_GET['buscar'])) {   ?>
 
 <form name="frmUser" method="post" action="" >
  <script language="javascript" src="js/users.js" type="text/javascript"></script>    
