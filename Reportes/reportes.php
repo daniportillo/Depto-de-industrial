@@ -44,6 +44,7 @@
         <th>Descripción</th>
         <th>Fecha de Inicio</th>
         <th>Fecha de Modificación</th>
+        <th>Estatus</th>
         <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar" >
            <input name="update" value="Editar" onClick="setUpdateAction();" type="button" class="btn btn-primary">
         <input class="btn btn-danger"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
@@ -69,7 +70,7 @@ else
 {
 $inicio = ($pagina-1) * $registros;
 } 
-  $result = "SELECT r.reporte_id, u.name as solicitante, r.tipo, r.ubicacion, r.fecha_mod,r.fecha_inicio, r.estatus, SUBSTRING(r.descrip, 1,80) as descripcion 
+  $result = "SELECT r.reporte_id, u.name as solicitante, r.tipo, r.ubicacion, r.fecha_mod,r.fecha_inicio, r.estatus, SUBSTRING(r.descrip, 1,20) as descripcion 
   FROM reportes_industrial r, usuarios_industrial u 
   WHERE r.user_id=u.user_id
   ORDER BY r.fecha_inicio desc limit ".$inicio." , ".$registros." ";
@@ -86,11 +87,12 @@ $total_paginas = ceil($total_registros / $registros);
   while ($row = mysqli_fetch_array($cad)) {
 ?>
  <tr> 
-   <td><b><p><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo utf8_decode($row['solicitante']) ?></p></b> </td>
-  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo substr(utf8_decode($row['tipo']), 0,30) ?></b></td>
-  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><p><?php echo substr(utf8_decode($row['descripcion']), 0,20) ?>...</p></b> </td>
-  <td><b><p><?php echo $row['fecha_inicio']; ?></p></b></td>
-  <td><b><p><?php echo $row['fecha_mod']; ?></p></b></td>
+  <td align="center"><?php echo $row['solicitante']; ?></td>
+<td align="center"><?php echo $row['tipoServicio']; ?></td>
+<td align="center"><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo $row['descripcion']; ?></td>
+<td align="center"><?php echo $row['fecha_inicio']; ?></td>
+<td align="center"><?php echo $row['fecha_mod']; ?></td>
+<td align="center"><?php echo $row['estatus']; ?></td>
   <td><input type="checkbox" name="reportes[]" value="<?php echo $row["reporte_id"]; ?>" ></td> 
   </tr>    
         
