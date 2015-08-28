@@ -90,17 +90,11 @@ $total_paginas = ceil($total_registros / $registros);
          
       <?php     
     $i++;    
-<<<<<<< HEAD
-            }      
-mysqli_close($conn);
 
-		?>
-=======
-        }      
-      include('eliminar.php');   
+            }     
+             //include('eliminar.php');   
    
     ?>
->>>>>>> origin/master
     </tbody>
   </table>
 </form>
@@ -149,7 +143,7 @@ echo "</p></center>";
 </body>
 
 <?php
-<<<<<<< HEAD
+
 include "conexion.php";
 if (isset($_POST['eliminar']) && !empty($_POST['users'])) {
         $ids = implode(',', $_POST['users']);
@@ -161,7 +155,5 @@ if (isset($_POST['eliminar']) && !empty($_POST['users'])) {
 
 
 	include "footer.php";
-=======
-  include "footer.php";
->>>>>>> origin/master
+
  ?>

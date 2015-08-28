@@ -86,9 +86,9 @@ $total_paginas = ceil($total_registros / $registros);
   while ($row = mysqli_fetch_array($cad)) {
 ?>
  <tr> 
-   <td><b><p><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo utf8_decode($row['solicitante']) ?></p></b> </td>
-  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo substr(utf8_decode($row['tipo']), 0,30) ?></b></td>
-  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><p><?php echo substr(utf8_decode($row['descripcion']), 0,20) ?>...</p></b> </td>
+   <td><b><p><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo $row['solicitante'] ?></p></b> </td>
+  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo substr($row['tipo'], 0,30) ?></b></td>
+  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><p><?php echo substr($row['descripcion'], 0,20) ?>...</p></b> </td>
   <td><b><p><?php echo $row['fecha_inicio']; ?></p></b></td>
   <td><b><p><?php echo $row['fecha_mod']; ?></p></b></td>
   <td><input type="checkbox" name="reportes[]" value="<?php echo $row["reporte_id"]; ?>" ></td> 
