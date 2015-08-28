@@ -1,6 +1,7 @@
 * {
 	margin:0;
 	padding:0;
+	font-family: arial;
 }
  
  
@@ -19,7 +20,11 @@ min-height: 800px;
 
 .logo{
   float: left;
+  width: 300px;
 
+}
+.sistema{
+	font-family: 'Amaranth', sans-serif;
 }
 
 .jumbotron{

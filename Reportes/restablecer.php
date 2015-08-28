@@ -1,15 +1,15 @@
 <?php
 $token = $_GET['token'];
-$idusuario = $_GET['idusuario'];
+$user_id = $_GET['user_id'];
  
-$conexion = new mysqli('localhost', 'root', '', 'ejemplobd');
+include "conexion.php";
  
-$sql = "SELECT * FROM tblreseteopass WHERE token = '$token'";
-$resultado = $conexion->query($sql);
+$sql = "SELECT * FROM reseteopass WHERE token = '$token'";
+$resultado = $conn->query($sql);
  
 if( $resultado->num_rows > 0 ){
    $usuario = $resultado->fetch_assoc();
-   if( sha1($usuario['idusuario']) == $idusuario ){
+   if( sha1($usuario['user_id']) == $user_id ){
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,14 +32,14 @@ if( $resultado->num_rows > 0 ){
        <p></p>
        <div class="form-group">
         <label for="password"> Nueva contraseña </label>
-        < input type="password" class="form-control" name="password1" required>
+        <input type="password" class="form-control" name="password1" required>
        </div>
        <div class="form-group">
         <label for="password2"> Confirmar contraseña </label>
         <input type="password" class="form-control" name="password2" required>
        </div>
        <input type="hidden" name="token" value="<?php echo $token ?>">
-       <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+       <input type="hidden" name="user_id" value="<?php echo $user_id ?>">
        <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Recuperar contraseña" >
        </div>
@@ -62,4 +62,5 @@ if( $resultado->num_rows > 0 ){
  }
  else{
      header('Location:login.php');
+   }
 ?>

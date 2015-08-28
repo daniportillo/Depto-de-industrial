@@ -28,7 +28,7 @@
 	//Muestra de reportes para usuarios administradores
 if ($_SESSION['tipo']=='administrador') {
 	
-$registros=5;
+$registros=7;
 	@$pagina = $_GET ['pagina'];
 
 if (!isset($pagina))
@@ -40,7 +40,7 @@ else
 {
 $inicio = ($pagina-1) * $registros;
 } 
-	$result = "SELECT r.reporte_id, u.name as solicitante, r.tipoServicio, r.tipo, r.ubicacion, r.fecha_mod, r.estatus, SUBSTRING(r.descrip, 1,200) as descripcion 
+	$result = "SELECT r.reporte_id, u.name as solicitante, r.user_id,  r.tipoServicio, r.tipo, r.ubicacion, r.fecha_mod, r.estatus, SUBSTRING(r.descrip, 1,200) as descripcion 
 	FROM reportes_industrial r, usuarios_industrial u 
 	WHERE r.user_id=u.user_id AND r.estatus!='Finalizado'
 	ORDER BY r.fecha_mod desc limit ".$inicio." , ".$registros." ";
@@ -60,6 +60,7 @@ $total_paginas = ceil($total_registros / $registros);
 		<div class="col-md-10 col-md-offset-1">
 			<div class="col-md-1">
 			<input type="checkbox" name="reports[]" value="<?php echo $row['reporte_id']; ?>" >
+			<input type="hidden" name="idsUsersReportes[]" value="<?php echo $row['user_id']; ?>">
 			</div>
 			<div class="col-md-8">
 				<b><p class="text-justify"><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo $row['tipoServicio'].': '.$row['tipo'].' || Ubicación: '.$row['ubicacion'];?></a></p></b>
@@ -69,7 +70,10 @@ $total_paginas = ceil($total_registros / $registros);
 			<div class="col-md-2">
 				<br>
 
-			<button type="button" class="btn btnECorreo" data-toggle="modal" data-target="#enviarCorreoModal" data-keyboard="true"><span class="glyphicon glyphicon-pencil"></span> Enviar Correo</button>
+		<!--<button type="button" class="btn btnECorreo" data-toggle="modal" data-target="#enviarCorreoModal" data-keyboard="true"><span class="glyphicon glyphicon-pencil"></span> Enviar Correo</button>
+			-->
+			<a href="correoAdmin.php?id=<?php echo $row['user_id'] ?>" type="button" class="btn btnECorreo"><span class="glyphicon glyphicon-pencil"></span> Enviar Correo</a>
+			
 			</div>
 		</div>
 	</div>
@@ -79,7 +83,7 @@ $total_paginas = ceil($total_registros / $registros);
 
 <?php
 //llamamos las funciones de actualizar estado
-include "functions/estatus_change.php";	
+
 	}
 	
 	//creando los enlaces de paginacion de resultados
@@ -219,6 +223,7 @@ echo "</p></center>";
 ?>
 </form>
 <?php
+include "functions/estatus_change.php";	
 	include "footer.php";
 
  ?>

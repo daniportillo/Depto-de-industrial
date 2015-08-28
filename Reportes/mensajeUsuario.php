@@ -4,7 +4,7 @@ include "header.php";
 
 ?>
 
-<form class="form-horizontal">
+<form class="form-horizontal" method="POST">
 <fieldset>
 
 <legend>Enviar Correo</legend>
@@ -22,7 +22,7 @@ include "header.php";
 <div class="form-group">
   <label class="col-md-4 control-label" for="txtAreaMsg">Mensaje:</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="txtAreaMsg" name="txtAreaMsg" rows="7"></textarea>
+    <textarea class="form-control" id="txtAreaMsg" name="txtAreaMsg" rows="7" required></textarea>
   </div>
 </div>
 
@@ -30,7 +30,7 @@ include "header.php";
 <div class="form-group">
   <label class="col-md-4 control-label" for="btnCancelar"></label>
   <div class="col-md-4">
-    <button id="btnCancelar" name="btnCancelar" class="btn btn-danger ">Cancelar</button>
+    <button id="btnCancelar" name="btnCancelar" class="btn btn-danger " onclick="window.location='index.php';" >Cancelar</button>
     <button id="btnEnviar" name="btnEnviar" class="btn btn-primary pull-right">Enviar</button>
   </div>
 </div>
@@ -40,6 +40,22 @@ include "header.php";
 
 
 <?php
+
+if (isset($_POST['btnEnviar'])) {
+    $asunto=$_POST['txtAsunto'];
+    $Mensaje=$_POST['txtAreaMsg'];
+    $to = "armdan22@gmail.com";
+   
+    $headers = "From: armdan22@gmail.com" . "\r\n" .
+    "CC: armdan22@gmail.com";
+    if (@mail($to,$asunto,$Mensaje,$headers)) {
+         echo "Mensaje enviado";
+   
+    }else{
+         echo "Mensaje no enviado";
+         echo "";
+     }
+}
 
 include "footer.php";
 

@@ -31,10 +31,13 @@ if(!isset($_SESSION['nombre']))
 
 <div class="container">
 
-<div class="jumbotron">
-  <div class="logo"><img class="img-responsive"src="img/logoIndustrial.png" width="320" height="180"></div>
-  <h1 class="sistema">Sistema de Reportes</h1>
-  <h3><link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>Departamento de Industrial</h3>
+<div class="jumbotron" >
+  <div class="col-md-12 logo">
+    <img class="img-responsive" src="img/logocsti.png">
+  </div>
+  
+  <h1 class="sistema" ><link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>Sistema de Reportes</h1>
+  <h3><link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>Departamento de Ingeniería Industrial</h3>
 </div>
 
 <header>

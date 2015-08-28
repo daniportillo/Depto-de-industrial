@@ -1,10 +1,10 @@
 <?php
 $password1 = $_POST['password1'];
 $password2 = $_POST['password2'];
-$idusuario = $_POST['idusuario'];
+$user_id = $_POST['user_id'];
 $token = $_POST['token'];
  
-if( $password1 != "" && $password2 != "" && $idusuario != "" && $token != "" ){
+if( $password1 != "" && $password2 != "" && $user_id != "" && $token != "" ){
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,16 +25,16 @@ if( $password1 != "" && $password2 != "" && $idusuario != "" && $token != "" ){
 <?php
    include "conexion.php";
    $sql = " SELECT * FROM reseteopass WHERE token = '$token' ";
-   $resultado = $conexion->query($sql);
+   $resultado = $conn->query($sql);
    if( $resultado->num_rows > 0 ){
       $usuario = $resultado->fetch_assoc();
       if( sha1( $usuario['user_id'] === $user_id ) ){
          if( $password1 === $password2 ){
             $sql = "UPDATE usuarios_industrial SET password = '".sha1($password1)."' WHERE id = ".$usuario['user_id'];
-            $resultado = $conexion->query($sql);
+            $resultado = $conn->query($sql);
             if($resultado){
-               $sql = "DELETE FROM tblreseteopass WHERE token = '$token';";
-               $resultado = $conexion->query( $sql );
+               $sql = "DELETE FROM reseteopass WHERE token = '$token';";
+               $resultado = $conn->query( $sql );
 ?>
                <p class="alert alert-info"> La contraseña se actualizó con exito. </p>
 <?php
