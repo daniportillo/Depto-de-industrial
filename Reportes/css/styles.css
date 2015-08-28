@@ -67,5 +67,5 @@ box-shadow: 10px 12px 15px 0px rgba(0,0,0,0.38);
 }
 .btnResetearPass:hover{
 color:#819FF7;
-
+cursor: pointer;
 }

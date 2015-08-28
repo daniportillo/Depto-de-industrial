@@ -10,24 +10,24 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
-	
+
 </head>
 <body>
 	<section class="container login-form">
-		<form method="post" action="" role="login">
+		<form method="post"  role="login" >
 			<section>
-				<img src="img/logoIndustrial.png" alt="" class="img-responsive" />
-		
+				<img src="img/logocsti.png" alt="Logo Csti" class="img-responsive" />
+		    <h3 class="text-center">Sistema de reportes</h3>
 				<div class="form-group">
 	   				<input type="text" name="user" placeholder="Usuario" required class="form-control input-lg" />
 				</div>
 				<div class="form-group">
 	   				<input type="password" name="password" placeholder="Contraseña" required class="form-control input-lg" />
 				</div>
-				<button class="btn btnResetearPass" data-toggle="modal" data-target="#resetearPass" data-keyboard="true">¿Olvidaste tu contraseña?</button>
+				<a class="btnResetearPass" data-toggle="modal" data-target="#resetearPass" data-keyboard="true">¿Olvidaste tu contraseña?</a>
 				<!--<a href="#" data-toggle="modal" data-target="#resetearPass" data-keyboard="true" >¿Olvidaste tu contraseña?</a>-->
 				
-				<button type="submit" name="go" class="btn btn-lg btn-block btn-success">Iniciar Sesión</button>
+				<button type="submit" name="go" class="btn btn-lg btn-block btn-success" >Iniciar Sesión</button>
 			</section>
 		</form>
 
@@ -36,6 +36,9 @@
 	
 
 </body>
+<footer>
+<p class="pull-right" style="color:white">Desarrollado por CSTI 2015   </p>
+</footer>
 </html>
 <?php
 //incluidos la clase de conxion
@@ -94,7 +97,7 @@ if (isset($_POST['go']))
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-        	<h3 class="text-center" style="color:#819FF7; font-family:Impact">Reseteo de contraseña</h3>
+        	<h3 class="text-center" style="color:#819FF7"><link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>Reseteo de contraseña</h3>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body" style="padding:10px 50px;">

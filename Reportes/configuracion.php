@@ -36,7 +36,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="nombretxt">Nombre:</label>  
   <div class="col-md-5">
-  <input id="nombretxt" name="nombretxt" placeholder="Escriba nombre(s) y apellidos" class="form-control input-md" required="" type="text" 
+  <input id="nombretxt" name="nombretxt" placeholder="Escriba nombre(s) y apellidos" class="form-control input-md" required="" maxlength="100" type="text" 
   value='<?=$name?>'>
     
   </div>
@@ -57,7 +57,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="userNametxt">Nombre de usuario:</label>  
   <div class="col-md-4">
-  <input id="userNametxt" name="userNametxt" placeholder="Escriba nombre de usuario" class="form-control input-md" type="text" required 
+  <input id="userNametxt" name="userNametxt" placeholder="Escriba nombre de usuario" class="form-control input-md" type="text"  maxlength="30" required 
     value="<?=$user?>">
     
   </div>
@@ -67,7 +67,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="passtxt">Contraseña anterior:</label>  
   <div class="col-md-4">
-  <input id="passViejatxt" name="passViejatxt" placeholder="Contraseña anterior" class="form-control input-md" type="password" required>
+  <input id="passViejatxt" name="passViejatxt" placeholder="Contraseña anterior" class="form-control input-md" maxlength="30" type="password" required>
     
   </div>
 </div>
@@ -76,7 +76,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="passtxt">Nueva contraseña:</label>  
   <div class="col-md-4">
-  <input id="passNuevatxt" name="passNuevatxt" placeholder="Nueva contraseña" class="form-control input-md" type="password" required>
+  <input id="passNuevatxt" name="passNuevatxt" placeholder="Nueva contraseña" class="form-control input-md" maxlength="30" type="password" required>
     
   </div>
 </div>
@@ -85,7 +85,7 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
 <div class="form-group">
   <label class="col-md-4 control-label" for="emailtxt">E-mail:</label>  
   <div class="col-md-4">
-  <input id="emailtxt" name="emailtxt" placeholder="Escriba e-mail" class="form-control input-md" type="email" required
+  <input id="emailtxt" name="emailtxt" placeholder="Escriba e-mail" class="form-control input-md" type="email" required maxlength="100"
     value="<?=$mail?>">
     
   </div>

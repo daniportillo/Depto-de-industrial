@@ -7,15 +7,7 @@
   }
 
 ?>
-   <script type="text/javascript">
-        window.onload =function(){
-          select();
-        }
-        function cancelar(){
-           window.location.reload();
-         // window.location.href="nuevo_usuario.php";
-        }
-  </script>
+
 <!--Formulario para crear usuarios-->
 <form class="form-horizontal" class="crearUsuario" action="" method="post">
 <fieldset>
@@ -76,7 +68,7 @@
 <div class="form-group">
  
   <div class="col-md-6 col-md-offset-6">
-    <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger" onclick="cancelar()">Cancelar</button>
+    <button id="cancelarbtn" name="cancelarbtn" class="btn btn-danger" onclick="window.location='index.php';">Cancelar</button>
     <button id="crearUsuariobtn" name="crearUsuariobtn" class="btn btn-success">Crear usuario</button>
   </div>
 </div>
