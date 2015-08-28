@@ -141,8 +141,12 @@ if (isset($_POST['eliminar']) && !empty($_POST['users'])) {
         $ids = implode(',', $_POST['users']);
     $query="DELETE FROM usuarios_industrial WHERE user_id in ($ids)";    
     //$resultado=$conn->query($query);
+    mysqli_query($conn,"SET FOREIGN_KEY_CHECKS=0");
     mysqli_query($conn,$query) or die ("Error".mysqli_error($conn));
-     
+       echo'<script type="text/javascript">
+                alert("Se ha eliminado el/los usuarios.");
+                window.location="configuracionUsuarios.php";
+                </script>';
   } 
 
 

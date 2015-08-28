@@ -26,10 +26,11 @@
   <script language="javascript" src="js/reportes.js" type="text/javascript"></script>
   <br>
   <form method="GET" action="" onSubmit="return validarForm(this);" >
-
+<center>
 <input type="text" placeholder="Buscar Reporte(s)" name="palabra" class="form-control input">
-
-<input type="submit" value="Buscar" name="buscar" class="btn btn-primary">
+<br>
+<input type="submit" value="Buscar" name="buscar" class="btn btn-primary btn-lg">
+  <br><br>
 
 <?php include('buscador.php'); ?>
 </form>
@@ -44,9 +45,9 @@
         <th>Descripción</th>
         <th>Fecha de Inicio</th>
         <th>Fecha de Modificación</th>
-        <th><input class="btn btn-danger" name="eliminar" type="submit" value="Eliminar" >
-           <input name="update" value="Editar" onClick="setUpdateAction();" type="button" class="btn btn-primary">
-        <input class="btn btn-danger"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
+        <th>Estatus</th>
+        <th><button class="btn btn-danger" name="eliminar"  >Eliminar</button>
+        <input class="btn btn-primary"  name="pdf" type="submit" value="PDF" onclick="this.form.action='pdf.php';this.form.target='_blank';this.form.submit();parent.window.location.reload();">
         </th>
       </tr>
     </thead>
@@ -57,7 +58,7 @@
   //Muestra de reportes para usuarios administradores
 if ($_SESSION['tipo']=='administrador') {
   
-$registros=4;
+$registros=15;
   @$pagina = $_GET ['pagina'];
 
 if (!isset($pagina))
@@ -69,7 +70,7 @@ else
 {
 $inicio = ($pagina-1) * $registros;
 } 
-  $result = "SELECT r.reporte_id, u.name as solicitante, r.tipo, r.ubicacion, r.fecha_mod,r.fecha_inicio, r.estatus, SUBSTRING(r.descrip, 1,80) as descripcion 
+  $result = "SELECT r.reporte_id, u.name as solicitante, r.tipo, r.ubicacion, r.fecha_mod,r.fecha_inicio, r.estatus, SUBSTRING(r.descrip, 1,20) as descripcion 
   FROM reportes_industrial r, usuarios_industrial u 
   WHERE r.user_id=u.user_id
   ORDER BY r.fecha_inicio desc limit ".$inicio." , ".$registros." ";
@@ -86,11 +87,12 @@ $total_paginas = ceil($total_registros / $registros);
   while ($row = mysqli_fetch_array($cad)) {
 ?>
  <tr> 
-   <td><b><p><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo $row['solicitante'] ?></p></b> </td>
-  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo substr($row['tipo'], 0,30) ?></b></td>
-  <td><b><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><p><?php echo substr($row['descripcion'], 0,20) ?>...</p></b> </td>
-  <td><b><p><?php echo $row['fecha_inicio']; ?></p></b></td>
-  <td><b><p><?php echo $row['fecha_mod']; ?></p></b></td>
+  <td align="center"><?php echo $row['solicitante']; ?></td>
+<td align="center"><?php echo $row['tipo']; ?></td>
+<td align="center"><a href="verReportes.php?id=<?php echo $row['reporte_id'];?>"><?php echo $row['descripcion']; ?></td>
+<td align="center"><?php echo $row['fecha_inicio']; ?></td>
+<td align="center"><?php echo $row['fecha_mod']; ?></td>
+<td align="center"><?php echo $row['estatus']; ?></td>
   <td><input type="checkbox" name="reportes[]" value="<?php echo $row["reporte_id"]; ?>" ></td> 
   </tr>    
         
