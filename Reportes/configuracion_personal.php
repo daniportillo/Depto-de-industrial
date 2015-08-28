@@ -13,7 +13,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="nombretxt">Nombre:</label>  
   <div class="col-md-5">
-  <input id="nombretxt" name="nombretxt" placeholder="Escriba nombre(s) y apellidos" class="form-control input-md" required="" type="text"
+  <input id="nombretxt" name="nombretxt" placeholder="Escriba nombre(s) y apellidos" maxlength="100" class="form-control input-md" required="" type="text"
   value='<?=$name?>'>
     
   </div>
@@ -25,7 +25,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="userNametxt">Nombre de usuario:</label>  
   <div class="col-md-4">
-  <input id="userNametxt" name="userNametxt" placeholder="Escriba nombre de usuario" class="form-control input-md" required="" type="text"
+  <input id="userNametxt" name="userNametxt" placeholder="Escriba nombre de usuario" maxlength="30" class="form-control input-md" required="" type="text"
   value="<?=$user?>">
     
   </div>
@@ -35,7 +35,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="passtxt">Contraseña anterior:</label>  
   <div class="col-md-4">
-  <input id="passViejatxt" name="passViejatxt" placeholder="Contraseña anterior" class="form-control input-md" required="" type="password">
+  <input id="passViejatxt" name="passViejatxt" placeholder="Contraseña anterior" maxlength="30" class="form-control input-md" required="" type="password">
     
   </div>
 </div>
@@ -44,7 +44,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="passtxt">Nueva contraseña:</label>  
   <div class="col-md-4">
-  <input id="passNuevatxt" name="passNuevatxt" placeholder="Nueva contraseña" class="form-control input-md" required="" type="password">
+  <input id="passNuevatxt" name="passNuevatxt" placeholder="Nueva contraseña" maxlength="30" class="form-control input-md" required="" type="password">
     
   </div>
 </div>
@@ -53,7 +53,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="emailtxt">E-mail:</label>  
   <div class="col-md-4">
-  <input id="emailtxt" name="emailtxt" placeholder="Escriba e-mail" class="form-control input-md" required="" type="email"
+  <input id="emailtxt" name="emailtxt" placeholder="Escriba e-mail" maxlength="100" class="form-control input-md" required="" type="email"
   value="<?=$mail?>">
     
   </div>

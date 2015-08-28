@@ -18,15 +18,6 @@ if(!isset($_SESSION['nombre'])|| $_SESSION['tipo']!='administrador')
  <h3 text align="center";>Lista de usuarios registrados</h3>
  <br>
  
-<form method="GET" action="" onSubmit="return validarForm(this);" >
-
-<input type="text" placeholder="Buscar Maestros" name="palabra" class="form-control input">
-
-<input type="submit" value="Buscar" name="buscar" class="btn btn-primary">
-
-<?php include('buscadorusuarios.php'); ?>
-</form>
-
 
 <!--Tabla de Usuarios-->
 <form name="frmUser" method="POST" >
@@ -91,10 +82,16 @@ $total_paginas = ceil($total_registros / $registros);
       <?php     
     $i++;    
 
-            }     
-             //include('eliminar.php');   
+            }      
+mysqli_close($conn);
+
+		?>
+=======
+        }      
+      include('eliminar.php');   
    
     ?>
+>>>>>>> origin/master
     </tbody>
   </table>
 </form>
@@ -143,7 +140,7 @@ echo "</p></center>";
 </body>
 
 <?php
-
+<<<<<<< HEAD
 include "conexion.php";
 if (isset($_POST['eliminar']) && !empty($_POST['users'])) {
         $ids = implode(',', $_POST['users']);
@@ -155,5 +152,7 @@ if (isset($_POST['eliminar']) && !empty($_POST['users'])) {
 
 
 	include "footer.php";
-
+=======
+  include "footer.php";
+>>>>>>> origin/master
  ?>
