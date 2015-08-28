@@ -81,7 +81,7 @@ $total_paginas = ceil($total_registros / $registros);
          
       <?php     
     $i++;    
-<<<<<<< HEAD
+
             }      
 mysqli_close($conn);
 
