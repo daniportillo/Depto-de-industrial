@@ -10,20 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-  function enviar(formul){
-    var nomb = formul.textfield.value
-    if (nomb.toLowerCase() != nomb.toUpperCase()){
-        location = "destino.htm?"+nomb
-       }else{
-          alert("No es entrado ningún nombre");
-        }
-    } 
-  </script>
+
 </head>
 <body>
 	<section class="container login-form">
-		<form method="post"  role="login" action="javascript:enviar(this.form1)">
+		<form method="post"  role="login" >
 			<section>
 				<img src="img/logocsti.png" alt="Logo Csti" class="img-responsive" />
 		    <h3 class="text-center">Sistema de reportes</h3>
