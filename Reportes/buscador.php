@@ -32,8 +32,12 @@ include "eliminar_reportes.php";
 $buscar = $_GET["palabra"];
 
 $consulta_mysql=mysqli_query($conn,"SELECT r.reporte_id, u.name as solicitante, r.tipoServicio, r.tipo, r.ubicacion, r.fecha_mod, r.fecha_inicio, r.estatus, SUBSTRING(r.descrip, 1,20) 
-  as descripcion 	FROM reportes_industrial r, usuarios_industrial u WHERE r.user_id=u.user_id AND u.name   like '%$buscar%' OR 
-   r.user_id=u.user_id AND r.tipo OR r.user_id=u.user_id AND r.descrip like '%$buscar%' ORDER BY r.fecha_mod ");
+  as descripcion  FROM reportes_industrial r, usuarios_industrial u 
+  WHERE r.user_id=u.user_id AND u.name   like '%$buscar%' 
+  OR r.user_id=u.user_id AND r.tipo like '%$buscar%'
+  OR r.user_id=u.user_id AND r.tipoServicio like '%$buscar%' 
+  OR r.user_id=u.user_id AND r.descrip like '%$buscar%' 
+  ORDER BY r.fecha_mod ");
 while($row = mysqli_fetch_array($consulta_mysql)) {
 
 ?> 
