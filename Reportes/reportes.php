@@ -26,10 +26,11 @@
   <script language="javascript" src="js/reportes.js" type="text/javascript"></script>
   <br>
   <form method="GET" action="" onSubmit="return validarForm(this);" >
-
+<center>
 <input type="text" placeholder="Buscar Reporte(s)" name="palabra" class="form-control input">
-
-<input type="submit" value="Buscar" name="buscar" class="btn btn-primary">
+<br>
+<input type="submit" value="Buscar" name="buscar" class="btn btn-primary btn-lg">
+  <br><br>
 
 <?php include('buscador.php'); ?>
 </form>
