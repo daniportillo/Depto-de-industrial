@@ -36,49 +36,69 @@ $row[$i]= mysqli_fetch_array($result);
 <tr>
 <td><label>Nombre</label></td>
 <td>
-  <input name="name[]" class="form-control" type="text" value="<?php echo $row[$i]['name']; ?>">	
+  <div class="form-group"> 
+  <div class="col-md-3">
+  <input type="text" name="name[]" class="form-control" value="<?php echo $row[$i]['name']; ?>">
+</div>
+</div>
 </td>
 </tr>
 
 <tr>
 <td><label>Password</label></td>
 <td>
-<div class="form-group"> 
+  <div class="form-group"> 
   <div class="col-md-3">
-  <input name="password[]" class="form-control input-md" type="password" value="<?php echo $row[$i]['password']; ?>">
- </div>
-</div>
-
-</td>
-</tr>
-
-<tr>
-<td><label>Tipo</label></td>
-<td>
-<div class="form-group">
-  <div class="col-md-5">    
-<select  name="tipo[]" class="form-control">
-      <option selected><?php echo $row[$i]['tipo']; ?></option></option>
-      <option value="usuario">usuario</option>
-      <option value="administrador">administrador</option>
-    </select>
+  <input type="password" name="password[]"class="form-control input-md" value="<?php echo $row[$i]['password']; ?>">
   </div>
 </div>
 </td>
 </tr>
 
 <tr>
-<td><label>Nombre de Usuario</label></td>
+<td><label>Tipo</label></td>
 <td>
-<div class="form-group"> 
-  <div class="col-md-3">
-  <input name="userName[]" class="form-control input-md" type="ptext" value="<?php echo $row[$i]['userName']; ?>">
-  <input type="hidden" name="user_id[]" class="txtField" value="<?php echo $row[$i]['user_id']; ?>">
+  <div class="form-group">
+  <div class="col-md-5"> 
+<select  name="tipo[]" class="form-control" >
+      <option selected><?php echo $row[$i]['tipo']; ?></option></option>
+      <option value="usuario">usuario</option>
+      <option value="administrador">administrador</option>
+    </select>
  </div>
 </div>
 </td>
+</tr>
+
+
+<tr>
+<td><label>Nombre de Usuario</label></td>
+<td>
+  <div class="form-group"> 
+  <div class="col-md-3">
+  <input name="userName[]" class="form-control input-md" type="ptext" value="<?php echo $row[$i]['userName']; ?>">
+   </div>
+</div>
 </td>
 </tr>
+
+
+<tr>
+<td><label>Email</label></td>
+<td>
+<div class="form-group"> 
+  <div class="col-md-3"> 
+   <input type="text" name="email[]" class="form-control" value="<?php echo $row[$i]['email']; ?>" ></td><input type="hidden" name="user_id[]" class="txtField" value="<?php echo $row[$i]['user_id']; ?>">
+  </div>
+</div>
+</td>
+</tr>
+
+
+</table>
+</td>
+</tr>
+
 
 <?php
 }

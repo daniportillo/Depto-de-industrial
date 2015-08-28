@@ -1,14 +1,15 @@
 <?php
-ini_set("display_errors", false);
-$conn = mysql_connect("localhost","root","");
-mysql_select_db("csti_db",$conn);
 
+
+include "conexion.php";
 
 if ($_POST['pdf']) {
     $ids = implode(',', $_POST['reportes']);
-$result = mysql_query("SELECT * FROM reportes_industrial WHERE reporte_id in ($ids)");
+$result = mysqli_query($conn,"SELECT r.reporte_id, u.name as solicitante, r.tipo, r.ubicacion, r.fecha_mod,r.fecha_inicio, r.estatus, SUBSTRING(r.descrip, 1,80) as descripcion 
+  FROM reportes_industrial r, usuarios_industrial u 
+   WHERE r.user_id=u.user_id AND reporte_id in ($ids)");
    $i=0;
-while($row = mysql_fetch_array($result)) {
+while($row = mysqli_fetch_array($result)) {
       if($i%2==0)
    
     $content = "
@@ -39,9 +40,10 @@ titulo{
     <br>
     <br>
     <h4 margin-left: 15px>Tipo de trabajo: $row[tipo]</h4>
+    <h4 margin-left: 15px>Solicitante: $row[solicitante]</h4>
     <h4 margin-left: 15px>Ubicación: $row[ubicacion]</h4>
     <h4 margin-left: 15px>Descripcion del trabajo:</h4>
-    <p>$row[descrip]</p>
+    <p>$row[descripcion]</p>
     <h4>Fecha de inicio: $row[fecha_inicio]</h4>
     <h4>Fecha de Modificacion:  $row[fecha_mod]</h4>
     <h4>Estatus: $row[estatus]</h4>
