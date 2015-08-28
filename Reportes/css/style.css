@@ -6,7 +6,7 @@
  
  
 body {
-	background:#000099;
+	background:#BDBDBD;
 }
 .container{
 padding: 0;
@@ -22,9 +22,14 @@ min-height: 800px;
   float: left;
   width: 300px;
 
+
 }
 .sistema{
 	font-family: 'Amaranth', sans-serif;
+	text-shadow: 2px 2px #81BEF7;
+}
+.deptoIng{
+	text-shadow: 1px 1px #81BEF7;
 }
 
 .jumbotron{
@@ -34,7 +39,8 @@ min-height: 800px;
  
  .navbar-default{
 	width:auto;
-	background:#000057!important;
+	background:#045FB4!important;
+	border-style: 1px solid;
 }
  
 .navbar-default .navbar-nav > li > a {
@@ -42,12 +48,14 @@ min-height: 800px;
     font-size: 13px;
 }
 .navbar-default .navbar-nav > li > a:hover {
-    color:green!important;
+    color:#045FB4!important;
+    background: white;
 }
 
  
 .navbar-default:hover {
-	color:green!important;
+	color:#045FB4!important;
+
 }
 .navbar-toggle{
 	background:#000057!important;
@@ -106,13 +114,22 @@ form{
 .btnResetearPass{
 	background-color: red;
 }
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover{
-	background:#000057!important;
+.navbar-default .navbar-nav > .open > a{
+	background:#045FB4!important;
+
+}
+.navbar-default .navbar-nav > .open > a:hover{
+	background: white!important;
+}
+.navbar-default .navbar-nav > .open > a:focus, {
+	 background:#045FB4!important;
 }
 .submenuConfig, .submenuConfig >a {
- background:#000057!important;
+ background:#045FB4!important;
  color: white!important;
 }
 .submenuConfig >a:hover{
-	color:green!important;
+	color:#045FB4!important;
+	background: white!important;
+
 }

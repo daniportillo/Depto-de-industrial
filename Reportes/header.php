@@ -37,7 +37,7 @@ if(!isset($_SESSION['nombre']))
   </div>
   
   <h1 class="sistema" ><link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>Sistema de Reportes</h1>
-  <h3><link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>Departamento de Ingeniería Industrial</h3>
+  <h3 class="deptoIng"><link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet' type='text/css'>Departamento de Ingeniería Industrial</h3>
 </div>
 
 <header>
